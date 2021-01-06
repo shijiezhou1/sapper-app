@@ -60,7 +60,7 @@
         },
         { text: 'CV', path: '/cv' },
         { text: 'Contact', path: '/contact' },
-        { text: 'Home', path: '/', img: 'img/logo.png' }
+        { text: 'Home', path: '/', img: 'images/logo.png' }
     ]
 </script>
 
