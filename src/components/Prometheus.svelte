@@ -8,12 +8,14 @@
         display: inline-flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 20px;
         align-items: center;
+
         img {
             cursor: pointer;
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
+
             &:hover {
                 box-shadow: 0px 0px 5px 0px black;
             }
