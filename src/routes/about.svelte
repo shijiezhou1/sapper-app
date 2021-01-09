@@ -1,7 +1,13 @@
+<script>
+    import Quota from "../components/Quota.svelte";
+
+    const title = "About:";
+    const quote = "Every person has two education, one which he receives from other, and one, more important, which he gives himself.";
+    const brief = "— Edward Gibbon, British historian";
+</script>
+
 <svelte:head>
-	<title>About</title>
+  <title>{title}</title>
 </svelte:head>
 
-<h1>About this site</h1>
-
-<p>This is the 'about' page. There's not much here.</p>
+<Quota {brief} {quote} {title}/>

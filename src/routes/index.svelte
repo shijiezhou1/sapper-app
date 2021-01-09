@@ -1,6 +1,14 @@
 <script>
 	import { items } from "./project/items.js";
 	import Prometheus from '../components/Prometheus.svelte';
+
+	let title = 'SHIJIE ZHOU';
+
+	function watchTitle() {
+		title = 'SHIJIE ZHOU | PORTFOLIO';
+	}
+
+	$: watchTitle();
 </script>
 
 <style lang="scss">
@@ -12,7 +20,7 @@
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>{title}</title>
 </svelte:head>
 
 

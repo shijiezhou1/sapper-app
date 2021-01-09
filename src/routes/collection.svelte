@@ -1,3 +1,13 @@
-<h1>Collection</h1>
+<script>
+    import Quota from "../components/Quota.svelte";
 
-<p>Collection page</p>
+    const title = "Collection:";
+    const quote = "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.";
+    const brief = "— Antoine de Saint-Exupéry, French writer, poet, aristocrat, journalist and pioneering aviator";
+</script>
+
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>
+
+<Quota {brief} {quote} {title}/>
