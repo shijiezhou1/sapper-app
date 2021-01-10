@@ -1,3 +1,25 @@
-<h1>Book</h1>
+<script>
+    import { onMount } from 'svelte';
+    import { fetchBooks } from "../store/api";
+    import Loader from "../components/Loader.svelte";
+    import Prometheus from "../components/Prometheus.svelte";
+    import { books } from "../store/store";
 
-<p>Book page</p>
+    let result = null;
+    let loading = false;
+
+    onMount( async () => {
+        loading = true;
+        await fetchBooks().then( ( r ) => {
+            result = r;
+            books.set( r );
+            loading = false;
+        } );
+    } );
+
+</script>
+
+<Loader {loading}/>
+
+<Prometheus items={$books}/>
+
