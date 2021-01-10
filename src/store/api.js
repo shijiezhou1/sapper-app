@@ -1,5 +1,5 @@
-export async function fetchPosts() {
-    const res = await fetch( `https://api.shijiezhou.com/api/articles` );
+const getByUrl = async ( input ) => {
+    const res = await fetch( input );
     const json = await res.json();
 
     if ( res.ok ) {
@@ -7,26 +7,16 @@ export async function fetchPosts() {
     } else {
         throw new Error( json );
     }
+}
+
+export async function fetchPosts() {
+    return getByUrl( `https://api.shijiezhou.com/api/articles` );
 }
 
 export async function fetchBooks() {
-    const res = await fetch( `https://api.shijiezhou.com/api/books` );
-    const json = await res.json();
-
-    if ( res.ok ) {
-        return json;
-    } else {
-        throw new Error( json );
-    }
+    return getByUrl( `https://api.shijiezhou.com/api/books` );
 }
 
 export async function fetchMedium() {
-    const res = await fetch( `https://api.shijiezhou.com/api/medium` );
-    const json = await res.json();
-
-    if ( res.ok ) {
-        return json;
-    } else {
-        throw new Error( json );
-    }
+    return getByUrl( `https://api.shijiezhou.com/api/medium` );
 }

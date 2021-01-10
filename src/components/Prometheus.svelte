@@ -30,6 +30,14 @@
 </style>
 
 <div class="gallery">
-  {#each items as item, i}<img class="img" src={optimizeUrl(item.img)} alt="img"/>{/each}
+  {#each items as item, i}
+    {#if item.url}
+      <a href="{item.url}">
+        <img class="img" src={optimizeUrl(item.img)} alt="img"/>
+      </a>
+    {:else}
+      <img class="img" src={optimizeUrl(item.img)} alt="img"/>
+    {/if}
+  {/each}
 </div>
 
