@@ -1,3 +1,25 @@
-<h1>Consociation</h1>
+<script>
+    import { onMount } from 'svelte';
+    import { fetchConsociations } from "../store/api";
+    import Loader from "@/components/Loader.svelte";
+    import Prometheus from "@/components/Prometheus.svelte";
+    import { consociations } from "../store/store";
 
-<p>Consociation page</p>
+    let result = null;
+    let loading = false;
+
+    onMount( async () => {
+        loading = true;
+        await fetchConsociations().then( ( r ) => {
+            result = r;
+            consociations.set( r );
+            loading = false;
+        } );
+    } );
+
+</script>
+
+<Loader {loading}/>
+
+<Prometheus items={$consociations}/>
+

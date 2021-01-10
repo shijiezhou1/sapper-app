@@ -10,12 +10,6 @@ function createArticles() {
         subscribe,
         set,
         update,
-        increment: () => {
-        },
-        decrement: () => {
-        },
-        reset: () => {
-        }
     };
 }
 
@@ -30,13 +24,34 @@ function createBooks() {
         subscribe,
         set,
         update,
-        increment: () => {
-        },
-        decrement: () => {
-        },
-        reset: () => {
-        }
     };
 }
 
 export const books = createBooks();
+
+function createPodcasts() {
+    let value = [];
+    const { subscribe, set, update } = writable( value );
+
+    return {
+        subscribe,
+        set,
+        update
+    };
+}
+
+export const podcasts = createPodcasts();
+
+
+function createConsociation() {
+    let value = [];
+    const { subscribe, set, update } = writable( value );
+
+    return {
+        subscribe,
+        set,
+        update,
+    };
+}
+
+export const consociations = createConsociation();

@@ -17,6 +17,8 @@ export async function fetchBooks() {
     return getByUrl( `https://api.shijiezhou.com/api/books` );
 }
 
-export async function fetchMedium() {
-    return getByUrl( `https://api.shijiezhou.com/api/medium` );
-}
+export const fetchMedium = async () => getByUrl( `https://api.shijiezhou.com/api/medium` );
+
+export const fetchPodcasts = async () => getByUrl( `https://api.shijiezhou.com/api/podcasts` );
+
+export const fetchConsociations = async () => getByUrl( `https://api.shijiezhou.com/api/consociation` );
