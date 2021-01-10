@@ -1,9 +1,9 @@
 <script>
     import { onMount } from 'svelte';
-    import { fetchBooks } from "../store/api";
-    import Loader from "../components/Loader.svelte";
-    import Prometheus from "../components/Prometheus.svelte";
-    import { books } from "../store/store";
+    import { fetchBooks } from "@/store/api";
+    import Loader from "@/components/Loader.svelte";
+    import Prometheus from "@/components/Prometheus.svelte";
+    import { books } from "@/store/store";
 
     let result = null;
     let loading = false;

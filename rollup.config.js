@@ -8,26 +8,33 @@ import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
+// path alias
+import alias from '@rollup/plugin-alias';
+import sveltePreprocess from 'svelte-preprocess';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-const onwarn = (warning, onwarn) =>
-	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
-	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
-	onwarn(warning);
-	
+const onwarn = ( warning, onwarn ) =>
+	( warning.code === 'MISSING_EXPORT' && /'preload'/.test( warning.message ) ) ||
+	( warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test( warning.message ) ) ||
+	onwarn( warning );
 
-import sveltePreprocess from 'svelte-preprocess';
-const preprocess = sveltePreprocess({
+const customResolver = resolve( {
+	extensions: [ '.mjs', '.js', '.jsx', '.json', '.sass', '.scss' ]
+} );
+const projectRootDir = path.resolve( __dirname );
+const entries = [ { find: '@', replacement: path.resolve( projectRootDir, 'src/' ) }, ];
+
+const preprocess = sveltePreprocess( {
 	scss: {
-	  includePaths: ['src'],
+		includePaths: [ 'src' ],
 	},
 	postcss: {
-	  plugins: [require('autoprefixer')],
+		plugins: [ require( 'autoprefixer' ) ],
 	},
-  });
+} );
 
 
 export default {
@@ -35,11 +42,15 @@ export default {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
-			replace({
+			alias( {
+				entries,
+				customResolver
+			} ),
+			replace( {
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
-			}),
-			svelte({
+				'process.env.NODE_ENV': JSON.stringify( mode )
+			} ),
+			svelte( {
 				compilerOptions: {
 					dev,
 					hydratable: true,
@@ -86,11 +97,15 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
-			replace({
+			alias( {
+				entries,
+				customResolver
+			} ),
+			replace( {
 				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
-			}),
-			svelte({
+				'process.env.NODE_ENV': JSON.stringify( mode )
+			} ),
+			svelte( {
 				compilerOptions: {
 					dev,
 					generate: 'ssr',
