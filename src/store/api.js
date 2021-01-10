@@ -1,5 +1,5 @@
 export async function fetchPosts() {
-    const res = await fetch( `https://reqres.in/api/unknown?delay=1` );
+    const res = await fetch( `https://api.shijiezhou.com/api/articles` );
     const json = await res.json();
 
     if ( res.ok ) {
