@@ -55,3 +55,16 @@ function createConsociation() {
 }
 
 export const consociations = createConsociation();
+
+function createMedium() {
+    let value = [];
+    const { subscribe, set, update } = writable( value );
+
+    return {
+        subscribe,
+        set,
+        update,
+    };
+}
+
+export const medium = createMedium();

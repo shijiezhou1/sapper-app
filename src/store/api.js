@@ -9,16 +9,8 @@ const getByUrl = async ( input ) => {
     }
 }
 
-export async function fetchPosts() {
-    return getByUrl( `https://api.shijiezhou.com/api/articles` );
-}
-
-export async function fetchBooks() {
-    return getByUrl( `https://api.shijiezhou.com/api/books` );
-}
-
-export const fetchMedium = async () => getByUrl( `https://api.shijiezhou.com/api/medium` );
-
+export const fetchPosts = async () => getByUrl( `https://api.shijiezhou.com/api/articles` );
+export const fetchBooks = async () => getByUrl( `https://api.shijiezhou.com/api/books` );
 export const fetchPodcasts = async () => getByUrl( `https://api.shijiezhou.com/api/podcasts` );
-
 export const fetchConsociations = async () => getByUrl( `https://api.shijiezhou.com/api/consociation` );
+export const fetchMedium = async () => getByUrl( `https://api.shijiezhou.com/api/medium` );
