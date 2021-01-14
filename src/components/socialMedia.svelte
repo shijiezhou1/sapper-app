@@ -2,7 +2,6 @@
 
     import Fa from 'svelte-fa';
 
-    // TODO: Adding color as hash number;
     import {
         faGithub,
         faGitlab,
@@ -68,7 +67,7 @@
   }
 </style>
 
-
+<!--TODO: Adding hover effect-->
 <div class="social-medias">
   {#each socialItem as _, i}
     <a href="{_.url}" target="_blank">
