@@ -1,0 +1,78 @@
+<script>
+
+    import Fa from 'svelte-fa';
+
+    // TODO: Adding color as hash number;
+    import {
+        faGithub,
+        faGitlab,
+        faLinkedin,
+        faMedium,
+        faPinterest,
+        faStackOverflow,
+        faTumblrSquare,
+        faTwitter
+    } from "@fortawesome/free-brands-svg-icons";
+
+    const socialItem = [
+        {
+            name: faGitlab,
+            url: 'https://gitlab.com/shijiezhou1',
+            color: '#fa6d25'
+        },
+        {
+            name: faMedium,
+            url: 'https://medium.com/@.jay',
+            color: '#000000'
+        },
+        {
+            name: faLinkedin,
+            url: 'https://www.linkedin.com/in/shijiezhou1/',
+            color: '#0a66c2'
+        },
+        {
+            name: faGithub,
+            url: 'https://github.com/shijiezhou1',
+            color: '#000000'
+        },
+        {
+            name: faTwitter,
+            url: 'https://twitter.com/ShijieZhou5',
+            color: '#1ea1f2'
+        },
+        {
+            name: faPinterest,
+            url: 'https://www.pinterest.com/cs5129606/',
+            color: '#e60023'
+        },
+        {
+            name: faStackOverflow,
+            url: 'https://stackoverflow.com/users/10401645',
+            color: '#f48023'
+        },
+        {
+            name: faTumblrSquare,
+            url: 'https://shijiezhou.tumblr.com/',
+            color: '#000000'
+        },
+    ];
+</script>
+
+
+<style lang="scss">
+  .social-medias {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+</style>
+
+
+<div class="social-medias">
+  {#each socialItem as _, i}
+    <a href="{_.url}" target="_blank">
+      <Fa icon={_.name} color="{_.color}" size="lg"/>
+    </a>
+  {/each}
+</div>
