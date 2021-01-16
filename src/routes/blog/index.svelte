@@ -7,7 +7,7 @@
 </script>
 
 <script>
-	export let posts;
+	// export let posts;
 
 	import { onMount } from 'svelte';
 	import { fetchMedium } from "@/store/api";
