@@ -10,8 +10,10 @@
         faPinterest,
         faStackOverflow,
         faTumblrSquare,
-        faTwitter
+        faTwitter,
     } from "@fortawesome/free-brands-svg-icons";
+
+    import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
     const socialItem = [
         {
@@ -65,13 +67,36 @@
     align-items: center;
     gap: 20px;
   }
+
+  .subscribe {
+    text-align: center;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      min-width: 320px;
+      margin-right: 10px;
+      padding: 10px;
+      position: relative;
+    }
+  }
 </style>
 
-<!--TODO: Adding hover effect-->
+<div class="subscribe">
+  <input placeholder="Subscribe me" type="text">
+  <a>
+    <Fa color="red" icon={faEnvelope} size="2x"/>
+  </a>
+</div>
+
+
 <div class="social-medias">
   {#each socialItem as _, i}
     <a href="{_.url}" target="_blank">
-      <Fa icon={_.name} color="{_.color}" size="lg"/>
+      <Fa icon={_.name} color="{_.color}" size="2x"/>
     </a>
   {/each}
 </div>
