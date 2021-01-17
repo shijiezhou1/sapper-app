@@ -1,17 +1,17 @@
 {
-  "name": "TODO",
+  "name": "SapperApp",
   "description": "TODO",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev --no-hot",
+    "dev": "sapper dev",
     "build": "sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "compression": "^1.7.1",
     "polka": "next",
     "postcss": "^8.2.2",
