@@ -8,13 +8,13 @@
 
 <style lang="scss">
   .gallery {
-    display: flex;
     justify-content: center;
     max-width: 768px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
+    margin: auto;
 
     img {
       width: 100%/3;

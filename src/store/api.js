@@ -1,3 +1,6 @@
+const API_URL = 'https://shijiezhou.herokuapp.com/api/';
+// 'https://api.shijiezhou.com/api/';
+
 const getByUrl = async ( input ) => {
     const res = await fetch( input );
     const json = await res.json();
@@ -9,8 +12,8 @@ const getByUrl = async ( input ) => {
     }
 }
 
-export const fetchPosts = async () => getByUrl( `https://api.shijiezhou.com/api/articles` );
-export const fetchBooks = async () => getByUrl( `https://api.shijiezhou.com/api/books` );
-export const fetchPodcasts = async () => getByUrl( `https://api.shijiezhou.com/api/podcasts` );
-export const fetchConsociations = async () => getByUrl( `https://api.shijiezhou.com/api/consociation` );
-export const fetchMedium = async () => getByUrl( `https://api.shijiezhou.com/api/medium` );
+export const fetchPosts = async () => getByUrl( `${ API_URL }articles` );
+export const fetchBooks = async () => getByUrl( `${ API_URL }books` );
+export const fetchPodcasts = async () => getByUrl( `${ API_URL }podcasts` );
+export const fetchConsociations = async () => getByUrl( `${ API_URL }consociation` );
+export const fetchMedium = async () => getByUrl( `${ API_URL }medium` );

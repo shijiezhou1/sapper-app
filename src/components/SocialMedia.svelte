@@ -57,6 +57,10 @@
             color: '#000000'
         },
     ];
+
+    function handleClick() {
+        alert( 'Subscribed!' );
+    }
 </script>
 
 
@@ -82,14 +86,18 @@
       padding: 10px;
       position: relative;
     }
+
+    div {
+      cursor: pointer;
+    }
   }
 </style>
 
 <div class="subscribe">
-  <input placeholder="Subscribe me" type="text">
-  <a>
+  <input placeholder="Email to subscribe" type="text">
+  <div on:click|once={handleClick}>
     <Fa color="red" icon={faEnvelope} size="2x"/>
-  </a>
+  </div>
 </div>
 
 

@@ -1,0 +1,1 @@
+export const VUE_APP_GITHUB_CDN = 'https://raw.githubusercontent.com/shijiezhou1/Artemis/master/';
