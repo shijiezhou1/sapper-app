@@ -1,0 +1,37 @@
+<script context="module">
+    export async function preload( { params } ) {
+        return { params };
+    }
+</script>
+
+<script>
+    import { items } from '../project/items';
+
+    export let params;
+    export let project = {
+        title: "Project",
+        html: ""
+    };
+    project = items.find( r => r.msg === params.msg );
+    console.log( { project } );
+</script>
+
+<style lang="scss">
+  .content {
+    width: 100%;
+  }
+
+  .content :global(img) {
+    width: 100%;
+  }
+</style>
+
+<svelte:head>
+  <title>{project.msg}</title>
+</svelte:head>
+
+<h1>{project.msg}</h1>
+
+<div class="content">
+  {@html project.html}
+</div>

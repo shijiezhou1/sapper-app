@@ -63,10 +63,12 @@
           <img class="img" src={optimizeUrl(item.img)} alt="img"/>
         </a>
       {:else}
-        <img class="img" src={optimizeUrl(item.img)} alt="{item.des}"/>
-        {#if item.des}
-          <p class="img-desc">{item.des}</p>
-        {/if}
+        <a href="project/{item.msg}">
+          <img class="img" src={optimizeUrl(item.img)} alt="{item.des}"/>
+          {#if item.des}
+            <p class="img-desc">{item.des}</p>
+          {/if}
+        </a>
       {/if}
     </div>
   {/each}
