@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { fetchPosts } from "../../store/api";
-    import articles from "../../store/store";
+    import {articles} from "../../store/store";
     import Loader from "../../components/Loader.svelte";
     import Prometheus from "../../components/Prometheus.svelte";
 

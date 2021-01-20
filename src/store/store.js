@@ -1,29 +1,41 @@
 import { writable } from 'svelte/store';
 
+export const count = writable( 0 );
+
 const creator = () => {
     let value = [];
     const { subscribe, set, update } = writable( value );
     return { subscribe, set, update, };
 };
 
-// const createArticles = () => creator();
-// const createBooks = () => creator();
-// const createPodcasts = () => creator();
-// const createConsociation = () => creator();
-// const createMedium = () => creator();
+function createArticles() {
+    return creator();
+}
 
-const articles = () => creator();
-const books = () => creator();
-const podcasts = () => creator();
-const consociations = () => creator();
-const medium = () => creator();
-const count = writable( 0 );
+export const articles = createArticles();
 
-export default {
-    articles,
-    books,
-    podcasts,
-    consociations,
-    medium,
-    count,
-};
+
+function createBooks() {
+    return creator();
+}
+
+export const books = createBooks();
+
+function createPodcasts() {
+    return creator();
+}
+
+export const podcasts = createPodcasts();
+
+
+function createConsociation() {
+    return creator();
+}
+
+export const consociations = createConsociation();
+
+function createMedium() {
+    return creator();
+}
+
+export const medium = createMedium();
