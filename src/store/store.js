@@ -2,69 +2,40 @@ import { writable } from 'svelte/store';
 
 export const count = writable( 0 );
 
-function createArticles() {
+const creator = () => {
     let value = [];
     const { subscribe, set, update } = writable( value );
+    return { subscribe, set, update, };
+};
 
-    return {
-        subscribe,
-        set,
-        update,
-    };
+function createArticles() {
+    return creator();
 }
 
 export const articles = createArticles();
 
 
 function createBooks() {
-    let value = [];
-    const { subscribe, set, update } = writable( value );
-
-    return {
-        subscribe,
-        set,
-        update,
-    };
+    return creator();
 }
 
 export const books = createBooks();
 
 function createPodcasts() {
-    let value = [];
-    const { subscribe, set, update } = writable( value );
-
-    return {
-        subscribe,
-        set,
-        update
-    };
+    return creator();
 }
 
 export const podcasts = createPodcasts();
 
 
 function createConsociation() {
-    let value = [];
-    const { subscribe, set, update } = writable( value );
-
-    return {
-        subscribe,
-        set,
-        update,
-    };
+    return creator();
 }
 
 export const consociations = createConsociation();
 
 function createMedium() {
-    let value = [];
-    const { subscribe, set, update } = writable( value );
-
-    return {
-        subscribe,
-        set,
-        update,
-    };
+    return creator();
 }
 
 export const medium = createMedium();
