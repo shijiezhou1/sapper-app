@@ -1,8 +1,7 @@
-const API_URL = 'https://shijiezhou.herokuapp.com/api/';
-// 'https://api.shijiezhou.com/api/';
+import { API_URL } from "../config";
 
-const getByUrl = async ( input ) => {
-    const res = await fetch( input );
+const getByUrl = async ( url ) => {
+    const res = await fetch( url );
     const json = await res.json();
 
     if ( res.ok ) {

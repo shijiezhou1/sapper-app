@@ -1,4 +1,5 @@
 export const VUE_APP_GITHUB_CDN = 'https://raw.githubusercontent.com/shijiezhou1/Artemis/master/';
+export const API_URL = 'https://shijiezhou.herokuapp.com/api/'; // 'https://api.shijiezhou.com/api/';
 
 export const navigations = [
     {

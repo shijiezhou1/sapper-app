@@ -16,14 +16,40 @@
     align-items: center;
     margin: auto;
 
-    img {
-      width: 100%/3;
+    div {
+      position: relative;
       cursor: pointer;
       width: 180px;
       height: 180px;
 
+      img {
+        width: 180px;
+        height: 180px;
+      }
+
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(70, 211, 252, 1) 100%);
+        color: white;
+        font-size: 18px;
+        opacity: 0;
+        transition: 0.55s;
+      }
+
       &:hover {
         box-shadow: 0px 0px 5px 0px black;
+
+        p {
+          opacity: 1;
+        }
       }
     }
   }
@@ -31,13 +57,18 @@
 
 <div class="gallery">
   {#each items as item, i}
-    {#if item.url}
-      <a href="{item.url}">
-        <img class="img" src={optimizeUrl(item.img)} alt="img"/>
-      </a>
-    {:else}
-      <img class="img" src={optimizeUrl(item.img)} alt="img"/>
-    {/if}
+    <div>
+      {#if item.url}
+        <a href="{item.url}">
+          <img class="img" src={optimizeUrl(item.img)} alt="img"/>
+        </a>
+      {:else}
+        <img class="img" src={optimizeUrl(item.img)} alt="{item.des}"/>
+        {#if item.des}
+          <p class="img-desc">{item.des}</p>
+        {/if}
+      {/if}
+    </div>
   {/each}
 </div>
 
