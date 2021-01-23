@@ -8,10 +8,7 @@
 
     import Quota from "../../components/Quota.svelte";
 
-    const headerTitle = 'SHIJIE ZHOU | Project';
-
     let loading = false;
-
     onMount( async () => {
         loading = true;
         await fetchPosts().then( ( r ) => {
@@ -20,17 +17,16 @@
         } );
     } );
 
-    const title = "Expedition:"
+    const title = "SHIJIE ZHOU | Project"
     const quote = "The Way Get Started Is To Quit Talking And Begin Doing."
     const brief = "-- Walt Disney, Entrepreneur, Animator, Writer, Voice actor and Film Producer."
-
 </script>
 
 <svelte:head>
-  <title>{headerTitle}</title>
+  <title>{title}</title>
 </svelte:head>
 
-<Quota {brief} {quote} {title}/>
+<Quota {brief} {quote} title="Project:"/>
 
 <Loader {loading}/>
 

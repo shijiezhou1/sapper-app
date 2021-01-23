@@ -10,7 +10,7 @@
   <title>{title}</title>
 </svelte:head>
 
-<Quota {brief} {quote} {title}/>
+<Quota {brief} {quote} title="About:"/>
 
 <style>
     .profile {

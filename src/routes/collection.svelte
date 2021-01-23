@@ -40,7 +40,7 @@
   <title>{title}</title>
 </svelte:head>
 
-<Quota {brief} {quote} {title}/>
+<Quota {brief} {quote} title="Collection:"/>
 
 <div class="swipe-holder">
   <Swipe {...swipeConfig}>

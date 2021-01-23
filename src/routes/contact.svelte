@@ -13,6 +13,6 @@
   <title>{title}</title>
 </svelte:head>
 
-<Quota {brief} {quote} {title}/>
+<Quota {brief} {quote} title="Contact:"/>
 
 <SocialMedia/>

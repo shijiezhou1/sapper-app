@@ -13,10 +13,13 @@
 	import { fetchMedium } from "@/store/api";
 	import Loader from "@/components/Loader.svelte";
 	import { medium } from "@/store/store";
+	import Quota from "@/components/Quota.svelte";
 
 	let result = null;
 	let loading = false;
 	const title = 'SHIJIE ZHOU | Blog';
+	const quote = "Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.";
+	const brief = "- Albert Einstein Theoretical Physicist"
 
 	onMount( async () => {
 		loading = true;
@@ -41,6 +44,12 @@
 </svelte:head>
 
 <Loader {loading}/>
+
+<Quota {brief} {quote} title="Blog:"/>
+
+<div>
+	something
+</div>
 
 <!--<ul>-->
 <!--	{#each $medium as post}-->
