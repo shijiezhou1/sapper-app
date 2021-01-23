@@ -16,6 +16,7 @@
 
 	let result = null;
 	let loading = false;
+	const title = 'SHIJIE ZHOU | Blog';
 
 	onMount( async () => {
 		loading = true;
@@ -36,7 +37,7 @@
 </style>
 
 <svelte:head>
-	<title>Blog</title>
+	<title>{title}</title>
 </svelte:head>
 
 <Loader {loading}/>
