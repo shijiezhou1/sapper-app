@@ -2,7 +2,7 @@
 	import { items } from "./project/items.js";
 	import Prometheus from '../components/Prometheus.svelte';
 
-	let title = 'SHIJIE ZHOU';
+	let title = 'SHIJIE ZHOU | Home';
 
 	function watchTitle() {
 		title = 'SHIJIE ZHOU | PORTFOLIO';

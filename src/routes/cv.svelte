@@ -1,6 +1,13 @@
 <script>
+    const title = "SHIJIE ZHOU | CV";
+
     export const url = 'https://cdn.jsdelivr.net/gh/shijiezhou1/Artemis@master/img/SHIJIE ZHOU RESUME.pdf';
 </script>
+
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>
+
 
 <iframe frameborder="0" height="100%"
         src="{url}"

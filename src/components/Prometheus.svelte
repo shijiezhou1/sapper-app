@@ -37,7 +37,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(70, 211, 252, 1) 100%);
+        background: radial-gradient(circle, rgb(62, 93, 246) 0%, rgba(70, 211, 252, 1) 100%);
         color: white;
         font-size: 18px;
         opacity: 0;

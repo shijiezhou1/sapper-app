@@ -1,7 +1,7 @@
 <script>
     import Quota from "../components/Quota.svelte";
 
-    const title = "About:";
+    const title = "SHIJIE ZHOU | About";
     const quote = "Every person has two education, one which he receives from other, and one, more important, which he gives himself.";
     const brief = "— Edward Gibbon, British historian";
 </script>

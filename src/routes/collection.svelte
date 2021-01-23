@@ -19,7 +19,7 @@
         { src: VUE_APP_GITHUB_CDN + "img/collection5.jpg" },
     ]
 
-    const title = "Collection:";
+    const title = "SHIJIE ZHOU | Collection";
     const quote = "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.";
     const brief = "— Antoine de Saint-Exupéry, French writer, poet, aristocrat, journalist and pioneering aviator";
 </script>

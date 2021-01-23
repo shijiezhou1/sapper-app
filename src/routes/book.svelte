@@ -7,6 +7,7 @@
 
     let result = null;
     let loading = false;
+    const title = "SHIJIE ZHOU | Book";
 
     onMount( async () => {
         loading = true;
@@ -18,6 +19,10 @@
     } );
 
 </script>
+
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>
 
 <Loader {loading}/>
 
