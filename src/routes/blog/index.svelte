@@ -26,6 +26,7 @@
 		await fetchMedium().then( ( r ) => {
 			result = r;
 			medium.set( r );
+			console.log( { medium } )
 			loading = false;
 		} );
 	} );
@@ -48,7 +49,9 @@
 <Quota {brief} {quote} title="Blog:"/>
 
 <div>
-	something
+	{#each medium as _, index}
+		<!--		TODO: create medium template -->
+	{/each}
 </div>
 
 <!--<ul>-->
