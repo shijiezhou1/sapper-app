@@ -57,6 +57,10 @@
 
 	:global(.medium-feed-image a img) {
 		width: 100%;
+		height: 320px;
+		@media (max-width: 414px) {
+			height: 120px;
+		}
 	}
 
 	:global(.medium-feed-item p) {

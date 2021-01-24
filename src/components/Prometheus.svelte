@@ -12,7 +12,6 @@
     max-width: 768px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     align-items: center;
     margin: auto;
 
@@ -21,6 +20,7 @@
       cursor: pointer;
       width: 180px;
       height: 180px;
+      padding: 10px;
 
       img {
         width: 180px;
@@ -34,6 +34,7 @@
         text-align: center;
         margin: auto;
         position: absolute;
+        left: 0;
         top: 0;
         width: 100%;
         height: 100%;

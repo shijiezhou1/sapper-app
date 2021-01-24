@@ -24,16 +24,22 @@
     const brief = "— Antoine de Saint-Exupéry, French writer, poet, aristocrat, journalist and pioneering aviator";
 </script>
 
-<style>
-    .swipe-holder {
-        height: 47vh;
-        width: 100%;
+<style lang="scss">
+  .swipe-holder {
+    height: 47vh;
+    width: 100%;
+    @media (max-width: 414px) {
+      height: 25vh;
     }
+  }
 
-    img {
-        width: 100%;
-        height: 400px;
+  img {
+    width: 100%;
+    height: 400px;
+    @media (max-width: 414px) {
+      height: 200px;
     }
+  }
 </style>
 
 <svelte:head>

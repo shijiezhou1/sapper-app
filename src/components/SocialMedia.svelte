@@ -69,7 +69,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    flex-wrap: wrap;
+
+    a {
+      padding: 10px;
+    }
   }
 
   .subscribe {
@@ -85,6 +89,9 @@
       margin-right: 10px;
       padding: 10px;
       position: relative;
+      @media (max-width: 414px) {
+        min-width: 200px;
+      }
     }
 
     div {
