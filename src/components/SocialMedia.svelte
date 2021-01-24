@@ -65,6 +65,10 @@
 
 
 <style lang="scss">
+  input[type='text'], textarea {
+    font-size: 16px;
+  }
+
   .social-medias {
     display: flex;
     justify-content: center;
@@ -73,6 +77,11 @@
 
     a {
       padding: 10px;
+    }
+
+    @media (max-width: 414px) {
+      width: 60%;
+      margin: auto;
     }
   }
 
@@ -102,7 +111,7 @@
 
 <div class="subscribe">
   <input placeholder="Email to subscribe" type="text">
-  <div on:click|once={handleClick}>
+  <div on:click={handleClick}>
     <Fa color="red" icon={faEnvelope} size="2x"/>
   </div>
 </div>

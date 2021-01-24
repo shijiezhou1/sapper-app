@@ -4,6 +4,19 @@
     export const url = 'https://cdn.jsdelivr.net/gh/shijiezhou1/Artemis@master/img/SHIJIE ZHOU RESUME.pdf';
 </script>
 
+<style lang="scss">
+  .cv-iframe {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+</style>
+
 <svelte:head>
   <title>{title}</title>
 </svelte:head>
@@ -11,7 +24,7 @@
 
 <iframe frameborder="0" height="100%"
         src="{url}"
-        style="overflow:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px"
+        class="cv-iframe"
         title="cv"
-        width="100%"
+        scrolling="no"
 ></iframe>

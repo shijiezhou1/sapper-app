@@ -90,12 +90,12 @@
 	{#each $medium as _, index}
 		<div>
 			{@html _.content}
-		</div>
-		<div class="blog-container-pubtime">{_.pubDate} - {_.creator}</div>
-		<div class="blog-container-categories">
-			{#each _.categories as __, index}
-				<span>{__}</span>
-			{/each}
+			<div class="blog-container-pubtime">{_.pubDate} - {_.creator}</div>
+			<div class="blog-container-categories">
+				{#each _.categories as __, index}
+					<span>{__}</span>
+				{/each}
+			</div>
 		</div>
 	{/each}
 </div>

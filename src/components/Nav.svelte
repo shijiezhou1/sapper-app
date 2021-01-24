@@ -1,6 +1,18 @@
 <script>
     export let segment;
     export let navigations;
+    import { clickOutside } from '../utils/clickOutside.js';
+
+    let showChild = null;
+
+    function handleShowNav( index ) {
+        showChild = index;
+    }
+
+    function handleCloseSubMenu() {
+        showChild = null;
+    }
+
 </script>
 
 <style lang="scss">
@@ -25,16 +37,20 @@
   li {
     list-style: none;
 
-    &:hover {
-      .subMenu {
-        display: block;
+    @media (min-width: 414px) {
+      &:hover {
+        .subMenu {
+          display: block;
+        }
       }
     }
+
 
     &.logo {
       display: flex;
       align-items: center;
       margin-left: auto;
+      justify-content: flex-end;
 
       img {
         width: 80px;
@@ -42,6 +58,9 @@
       }
 
       a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 0;
         margin: 0;
       }
@@ -70,7 +89,7 @@
   }
 
   .subMenu {
-    display: none;
+    display: block;
     position: absolute;
     z-index: 1;
     border: 1px solid lightgray;
@@ -81,7 +100,7 @@
       padding: 10px;
 
       &:hover {
-        background-color: lightgray
+        background-color: lightgray;
       }
     }
   }
@@ -94,11 +113,12 @@
     {#each navigations as _, i}
       {#if _.text !== 'Home' }
         <li><a rel=prefetch aria-current="{segment === _.text.toLowerCase() ? 'page' : undefined}"
+               on:click={()=>handleShowNav(i)}
                href="{_.path}">{_.text}</a>
-          {#if ( _.subMenu ) }
-            <div class="subMenu">
+          {#if ( _.subMenu && i === showChild ) }
+            <div class="subMenu" use:clickOutside on:clickOutside={handleCloseSubMenu}>
               {#each _.subMenu as _, i}
-                <a class="subMenu-row" href="{_.path}">{_.text}</a>
+                <a class="subMenu-row" href="{_.path}" on:click={handleCloseSubMenu}>{_.text}</a>
               {/each}
             </div>
           {/if}
