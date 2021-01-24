@@ -7,8 +7,6 @@
 </script>
 
 <script>
-	// export let posts;
-
 	import { onMount } from 'svelte';
 	import { fetchMedium } from "@/store/api";
 	import Loader from "@/components/Loader.svelte";
@@ -26,18 +24,54 @@
 		await fetchMedium().then( ( r ) => {
 			result = r;
 			medium.set( r );
-			console.log( { medium } )
+			console.log( { medium: $medium } )
 			loading = false;
 		} );
 	} );
 
 </script>
 
-<style>
-	/*ul {*/
-	/*	margin: 0 0 1em 0;*/
-	/*	line-height: 1.5;*/
-	/*}*/
+<style lang="scss">
+	@mixin screenWidth {
+		width: 80%;
+		margin: auto;
+	}
+
+	.blog-container {
+		&-categories {
+			@include screenWidth;
+			margin-bottom: 50px;
+
+			span {
+				color: grey;
+				font-size: 12px;
+				text-transform: uppercase;
+				padding-right: 10px;
+			}
+		}
+
+		&-pubtime {
+			@include screenWidth;
+		}
+	}
+
+	:global(.medium-feed-image a img) {
+		width: 100%;
+	}
+
+	:global(.medium-feed-item p) {
+		@include screenWidth;
+	}
+
+	:global(.medium-feed-image a) {
+		display: flex;
+		justify-content: center;
+	}
+
+	:global(.medium-feed-snippet) {
+		font-size: 20px;
+		font-weight: bold;
+	}
 </style>
 
 <svelte:head>
@@ -48,18 +82,16 @@
 
 <Quota {brief} {quote} title="Blog:"/>
 
-<div>
-	{#each medium as _, index}
-		<!--		TODO: create medium template -->
+<div class="blog-container">
+	{#each $medium as _, index}
+		<div>
+			{@html _.content}
+		</div>
+		<div class="blog-container-pubtime">{_.pubDate} - {_.creator}</div>
+		<div class="blog-container-categories">
+			{#each _.categories as __, index}
+				<span>{__}</span>
+			{/each}
+		</div>
 	{/each}
 </div>
-
-<!--<ul>-->
-<!--	{#each $medium as post}-->
-<!--		&lt;!&ndash; we're using the non-standard `rel=prefetch` attribute to-->
-<!--				tell Sapper to load the data for the page as soon as-->
-<!--				the user hovers over the link or taps it, instead of-->
-<!--				waiting for the 'click' event &ndash;&gt;-->
-<!--&lt;!&ndash;		<li><a rel="prefetch" href="blog/{post.slug}">{post.title}</a></li>&ndash;&gt;-->
-<!--	{/each}-->
-<!--</ul>-->
