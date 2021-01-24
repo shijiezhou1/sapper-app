@@ -29,6 +29,12 @@
 		} );
 	} );
 
+	function getImageSource( image ) {
+		const regex = /src=\"([^"]+)\"/;
+		// always check if the image is present before returning
+		return image ? image.match( regex )[ 1 ] : 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/pike-place.jpg';
+	}
+
 </script>
 
 <style lang="scss">
@@ -55,11 +61,14 @@
 		}
 	}
 
-	:global(.medium-feed-image a img) {
+	.blog-container-img {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: 50%;
 		width: 100%;
-		height: 320px;
+		height: 400px;
 		@media (max-width: 414px) {
-			height: 120px;
+			height: 200px;
 		}
 	}
 
@@ -89,7 +98,10 @@
 <div class="blog-container">
 	{#each $medium as _, index}
 		<div>
-			{@html _.content}
+			<a href="{_.link}">
+				<div class="blog-container-img" style="background-image: url('{getImageSource(_.content)}')"></div>
+				<div>{_.contentSnippet}</div>
+			</a>
 			<div class="blog-container-pubtime">{_.pubDate} - {_.creator}</div>
 			<div class="blog-container-categories">
 				{#each _.categories as __, index}

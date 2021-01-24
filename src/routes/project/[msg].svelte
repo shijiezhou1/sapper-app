@@ -24,6 +24,12 @@
   .content :global(img) {
     width: 100%;
   }
+
+  :global(iframe) {
+    @media (max-width: 414px) {
+      height: 250px;
+    }
+  }
 </style>
 
 <svelte:head>
