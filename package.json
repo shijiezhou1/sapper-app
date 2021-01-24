@@ -16,6 +16,7 @@
     "compression": "^1.7.1",
     "polka": "next",
     "postcss": "^8.2.2",
+    "sapper-google-analytics": "^1.0.2",
     "sirv": "^1.0.0",
     "svelte-loading-spinners": "^0.1.3"
   },
