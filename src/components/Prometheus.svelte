@@ -17,7 +17,6 @@
 
     div {
       position: relative;
-      cursor: pointer;
       width: 180px;
       height: 180px;
       padding: 10px;
