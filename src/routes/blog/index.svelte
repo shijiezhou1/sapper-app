@@ -59,6 +59,11 @@
 		&-pubtime {
 			@include screenWidth;
 		}
+
+		&-title {
+			font-size: 15px;
+			font-weight: bold;
+		}
 	}
 
 	.blog-container-img {
@@ -100,7 +105,7 @@
 		<div>
 			<a href="{_.link}">
 				<div class="blog-container-img" style="background-image: url('{getImageSource(_.content)}')"></div>
-				<div>{_.contentSnippet}</div>
+				<div class="blog-container-title">{_.contentSnippet}</div>
 			</a>
 			<div class="blog-container-pubtime">{_.pubDate} - {_.creator}</div>
 			<div class="blog-container-categories">
