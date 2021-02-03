@@ -14,6 +14,11 @@
     };
     project = items.find( r => r.msg === params.msg );
     console.log( { project } );
+
+    function cleanupHTML(html) {
+      console.log('fire');
+      return html.replace(/(<([^>]+)>)/ig, '').replace(/\n|<br>|\s/g,' ');
+    }
   
 </script>
 
@@ -35,7 +40,9 @@
 
 <svelte:head>
   <title>{project.msg}</title>
-  <meta name="{project.msg}" content="{project.html}">
+  <meta name="{project.msg}" content="{cleanupHTML(project.html)}">
+  <meta property="og:title" content={project.msg} />
+  <meta property="og:description" content={cleanupHTML(project.html)} />
 </svelte:head>
 
 <h1>{project.msg}</h1>
