@@ -54,6 +54,16 @@
 <div class="app-container">
   <header>
     <GoogleAnalytics id={ga_measurment_id} {stores}/>
+    <!-- Begin 33Across SiteCTRL -->
+    <script>
+      var Tynt=Tynt||[];Tynt.push('c9ggSSzJar67HdaKjGFx_2');
+      (function(){var h,s=document.createElement('script');
+      s.src='https://cdn.tynt.com/ti.js';
+      h=document.getElementsByTagName('script')[0];
+      h.parentNode.insertBefore(s,h);})();
+    </script>
+    <!-- End 33Across SiteCTRL -->
+  
     <Nav {navigations} {segment}/>
   </header>
   <main>

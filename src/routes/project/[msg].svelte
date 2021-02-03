@@ -19,6 +19,12 @@
       console.log('fire');
       return html.replace(/(<([^>]+)>)/ig, '').replace(/\n|<br>|\s/g,' ');
     }
+
+    function getImageSource( image ) {
+      const regex = /src=\"([^"]+)\"/;
+      // always check if the image is present before returning
+      return image ? image.match( regex )[ 1 ] : 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/pike-place.jpg';
+    }
   
 </script>
 
@@ -46,6 +52,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content={'https://www.shijiezhou.com/project' + project.msg} />
   <meta property="og:description" content={cleanupHTML(project.html)} />
+  <meta property="og:image" content="{getImageSource(project.html)}" />
 </svelte:head>
 
 <h1>{project.msg}</h1>
