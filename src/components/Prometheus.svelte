@@ -60,7 +60,7 @@
     <div>
       {#if item.url}
         <a href="{item.url}">
-          <img class="img" src={optimizeUrl(item.img)} alt="img"/>
+          <img class="img" src={optimizeUrl(item.img)} alt="{item.des}"/>
         </a>
       {:else}
         <a href="project/{item.msg}">

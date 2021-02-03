@@ -126,7 +126,7 @@
       {:else}
         <li class="logo">
           <a href={_.path}>
-            <img src={_.img} alt="img">
+            <img src={_.img} alt="{_.img}">
           </a>
         </li>
       {/if}

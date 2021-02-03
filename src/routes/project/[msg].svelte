@@ -14,6 +14,7 @@
     };
     project = items.find( r => r.msg === params.msg );
     console.log( { project } );
+  
 </script>
 
 <style lang="scss">
@@ -34,6 +35,7 @@
 
 <svelte:head>
   <title>{project.msg}</title>
+  <meta name="{project.msg}" content="{project.html}">
 </svelte:head>
 
 <h1>{project.msg}</h1>
