@@ -41,7 +41,10 @@
 <svelte:head>
   <title>{project.msg}</title>
   <meta name="{project.msg}" content="{cleanupHTML(project.html)}">
+  <meta name="keywords" content="SEO" />
   <meta property="og:title" content={project.msg} />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content={'https://www.shijiezhou.com/project' + project.msg} />
   <meta property="og:description" content={cleanupHTML(project.html)} />
 </svelte:head>
 
