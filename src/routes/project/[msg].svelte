@@ -50,9 +50,17 @@
   <meta name="keywords" content="SEO" />
   <meta property="og:title" content={project.msg} />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content={'https://www.shijiezhou.com/project/' + project.msg} />
   <meta property="og:description" content={cleanupHTML(project.html)} />
   <meta property="og:image" content="{getImageSource(project.html)}" />
+  <meta property="og:url" content={'https://www.shijiezhou.com/project/' + project.msg} />
+  <meta property="og:site_name" content="SHIJIE ZHOU">
+
+  <meta property="twitter:image" content="{getImageSource(project.html)}">
+  <meta property="twitter:url" content="{'https://www.shijiezhou.com/project/' + project.msg}">
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content="{project.msg}">
+  <meta property="twitter:description" content="{cleanupHTML(project.html)}">
+  
 </svelte:head>
 
 <h1>{project.msg}</h1>
