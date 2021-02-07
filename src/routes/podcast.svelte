@@ -3,7 +3,7 @@
     import { fetchPodcasts } from "../store/api";
     import Loader from "@/components/Loader.svelte";
     import Prometheus from "@/components/Prometheus.svelte";
-    import { podcasts } from "../store/store";
+    import podcasts from "../store/store";
 
     let result = null;
     let loading = false;
