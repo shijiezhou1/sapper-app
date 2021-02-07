@@ -13,10 +13,9 @@
         html: ""
     };
     project = items.find( r => r.msg === params.msg );
-    console.log( { project } );
+    // console.log( { project } );
 
     function cleanupHTML(html) {
-      console.log('fire');
       return html.replace(/(<([^>]+)>)/ig, '').replace(/\n|<br>|\s/g,' ');
     }
 

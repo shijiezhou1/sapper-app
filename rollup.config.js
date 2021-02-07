@@ -11,6 +11,8 @@ import pkg from './package.json';
 // path alias
 import alias from '@rollup/plugin-alias';
 import sveltePreprocess from 'svelte-preprocess';
+// strip out
+import strip from 'rollup-plugin-strip';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -86,7 +88,24 @@ export default {
 
 			!dev && terser({
 				module: true
-			})
+			}),
+
+			strip({
+				// set this to `false` if you don't want to
+				// remove debugger statements
+				debugger: true,
+		  
+				// defaults to `[ 'console.*', 'assert.*' ]`
+				functions: [ 'console.log', 'assert.*', 'debug', 'alert' ],
+		  
+				// remove one or more labeled blocks by name
+				// defaults to `[]`
+				labels: ['unittest'],
+		  
+				// set this to `false` if you're not using sourcemaps –
+				// defaults to `true`
+				sourceMap: true
+			  }),
 		],
 
 		preserveEntrySignatures: false,
@@ -122,7 +141,24 @@ export default {
 			resolve({
 				dedupe: ['svelte']
 			}),
-			commonjs()
+			commonjs(),
+
+			strip({
+				// set this to `false` if you don't want to
+				// remove debugger statements
+				debugger: true,
+		  
+				// defaults to `[ 'console.*', 'assert.*' ]`
+				functions: [ 'console.log', 'assert.*', 'debug', 'alert' ],
+		  
+				// remove one or more labeled blocks by name
+				// defaults to `[]`
+				labels: ['unittest'],
+		  
+				// set this to `false` if you're not using sourcemaps –
+				// defaults to `true`
+				sourceMap: true
+			  })
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 

@@ -5,7 +5,6 @@
     let longDesc = '';
 
     function cleanupHTML(html) {
-      console.log('fire');
       return html.replace(/(<([^>]+)>)/ig, '').replace(/\n|<br>|\s/g,' ');
     }
 
