@@ -60,7 +60,6 @@
   <meta property="twitter:card" content="summary">
   <meta property="twitter:title" content="{project.msg}">
   <meta property="twitter:description" content="{cleanupHTML(project.html)}">
-  
 </svelte:head>
 
 <h1>{project.msg}</h1>
