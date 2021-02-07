@@ -74,6 +74,7 @@
 <style lang="scss">
   nav {
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
+    background-color: white;
   }
 
   ul {
@@ -81,6 +82,7 @@
     padding: 0 10px;
     display: flex;
     flex-direction: row;
+    background-color:inherit;
   }
 
   /* clearfix */
@@ -92,6 +94,7 @@
 
   li {
     list-style: none;
+    background-color:inherit;
 
     @media (min-width: 414px) {
       &:hover {

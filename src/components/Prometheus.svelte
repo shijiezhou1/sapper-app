@@ -24,6 +24,7 @@
       img {
         width: 180px;
         height: 180px;
+        border-radius: 10px;
       }
 
       p {

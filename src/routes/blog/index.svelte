@@ -77,6 +77,11 @@
 		}
 	}
 
+	.blog-container-title {
+		margin-top: 10px;
+		text-align: center;
+	}
+
 	:global(.medium-feed-item p) {
 		@include screenWidth;
 	}
