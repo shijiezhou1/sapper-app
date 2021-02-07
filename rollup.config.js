@@ -18,25 +18,25 @@ const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-const onwarn = ( warning, onwarn ) =>
-	( warning.code === 'MISSING_EXPORT' && /'preload'/.test( warning.message ) ) ||
-	( warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test( warning.message ) ) ||
-	onwarn( warning );
+const onwarn = (warning, onwarn) =>
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	onwarn(warning);
 
-const customResolver = resolve( {
-	extensions: [ '.mjs', '.js', '.jsx', '.json', '.sass', '.scss' ]
-} );
-const projectRootDir = path.resolve( __dirname );
-const entries = [ { find: '@', replacement: path.resolve( projectRootDir, 'src/' ) }, ];
+const customResolver = resolve({
+	extensions: ['.mjs', '.js', '.jsx', '.json', '.sass', '.scss']
+});
+const projectRootDir = path.resolve(__dirname);
+const entries = [{ find: '@', replacement: path.resolve(projectRootDir, 'src/') },];
 
-const preprocess = sveltePreprocess( {
+const preprocess = sveltePreprocess({
 	scss: {
-		includePaths: [ 'src' ],
+		includePaths: ['src'],
 	},
 	postcss: {
-		plugins: [ require( 'autoprefixer' ) ],
+		plugins: [require('autoprefixer')],
 	},
-} );
+});
 
 
 export default {
@@ -44,15 +44,15 @@ export default {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
-			alias( {
+			alias({
 				entries,
 				customResolver
-			} ),
-			replace( {
+			}),
+			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify( mode )
-			} ),
-			svelte( {
+				'process.env.NODE_ENV': JSON.stringify(mode)
+			}),
+			svelte({
 				compilerOptions: {
 					dev,
 					hydratable: true,
@@ -94,18 +94,18 @@ export default {
 				// set this to `false` if you don't want to
 				// remove debugger statements
 				debugger: true,
-		  
+
 				// defaults to `[ 'console.*', 'assert.*' ]`
-				functions: [ 'console.log', 'assert.*', 'debug', 'alert' ],
-		  
+				functions: ['console.log', 'assert.*', 'debug', 'alert'],
+
 				// remove one or more labeled blocks by name
 				// defaults to `[]`
 				labels: ['unittest'],
-		  
+
 				// set this to `false` if you're not using sourcemaps –
 				// defaults to `true`
 				sourceMap: true
-			  }),
+			}),
 		],
 
 		preserveEntrySignatures: false,
@@ -116,15 +116,15 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
-			alias( {
+			alias({
 				entries,
 				customResolver
-			} ),
-			replace( {
+			}),
+			replace({
 				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify( mode )
-			} ),
-			svelte( {
+				'process.env.NODE_ENV': JSON.stringify(mode)
+			}),
+			svelte({
 				compilerOptions: {
 					dev,
 					generate: 'ssr',
@@ -147,18 +147,18 @@ export default {
 				// set this to `false` if you don't want to
 				// remove debugger statements
 				debugger: true,
-		  
+
 				// defaults to `[ 'console.*', 'assert.*' ]`
-				functions: [ 'console.log', 'assert.*', 'debug', 'alert' ],
-		  
+				functions: ['console.log', 'assert.*', 'debug', 'alert'],
+
 				// remove one or more labeled blocks by name
 				// defaults to `[]`
 				labels: ['unittest'],
-		  
+
 				// set this to `false` if you're not using sourcemaps –
 				// defaults to `true`
 				sourceMap: true
-			  })
+			})
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 

@@ -20,20 +20,26 @@
     }
 
     function handleDarkMode() {
+      const nav = document.getElementsByTagName('nav')[0];
       if (!darkMode) {
         document.body.style.backgroundColor = "black";
         document.body.style.color = "white";
         darkMode = true;
+        nav.style.backgroundColor = "black";
+        nav.style.color = "white";
       } else {
         document.body.style.backgroundColor = "white";
         document.body.style.color = "black";
         darkMode = false;
+        nav.style.backgroundColor = "white";
+        nav.style.color = "black";
+        nav.setAttribute('data-theme', 'light');
       }
     }
 
 </script>
 
-<nav>
+<nav data-theme="light">
   <ul>
     <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
          the blog data when we hover over the link or tap it on a touchscreen -->
@@ -74,7 +80,8 @@
 <style lang="scss">
   nav {
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
-    background-color: white;
+    background-color:var(--bg-color);
+    color: var(--bg-text);
   }
 
   ul {
@@ -128,6 +135,9 @@
       .dark-mode {
         position: absolute;
         margin-top: 86px;
+        @media (max-width: 414px) {
+          display: none;
+        }
 
       .switch {
         position: relative;
