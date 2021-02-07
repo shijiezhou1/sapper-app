@@ -5,6 +5,7 @@
 
     let showChild = null;
     let showDarkMode = false;
+    let darkMode = false;
   
     function handleShowNav( index ) {
         showChild = index;
@@ -19,7 +20,15 @@
     }
 
     function handleDarkMode() {
-      console.log('toggle');
+      if (!darkMode) {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+        darkMode = true;
+      } else {
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+        darkMode = false;
+      }
     }
 
 </script>
@@ -206,7 +215,7 @@
     z-index: 1;
     border: 1px solid lightgray;
     cursor: pointer;
-    background-color: white;
+    background-color: inherit;
 
     &-row {
       padding: 10px;

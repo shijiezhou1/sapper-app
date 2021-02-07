@@ -65,7 +65,7 @@
 
 
 <style lang="scss">
-  input[type='text'], textarea {
+  input[type='text'] {
     font-size: 16px;
   }
 
