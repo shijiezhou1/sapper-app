@@ -112,11 +112,12 @@
          the blog data when we hover over the link or tap it on a touchscreen -->
     {#each navigations as _, i}
       {#if _.text !== 'Home' }
-        <li><a rel=prefetch aria-current="{segment === _.text.toLowerCase() ? 'page' : undefined}"
+        <li on:mouseover={() => handleShowNav(i)}><a rel=prefetch aria-current="{segment === _.text.toLowerCase() ? 'page' : undefined}"
                on:click={()=>handleShowNav(i)}
                href="{_.path}">{_.text}</a>
           {#if ( _.subMenu && i === showChild ) }
-            <div class="subMenu" use:clickOutside on:clickOutside={handleCloseSubMenu}>
+            <div class="subMenu" use:clickOutside on:clickOutside={handleCloseSubMenu} 
+              on:mouseleave={() => handleShowNav(null)}>
               {#each _.subMenu as _, i}
                 <a class="subMenu-row" href="{_.path}" on:click={handleCloseSubMenu}>{_.text}</a>
               {/each}
