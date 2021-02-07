@@ -3,7 +3,7 @@
     import { fetchConsociations } from "../store/api";
     import Loader from "@/components/Loader.svelte";
     import Prometheus from "@/components/Prometheus.svelte";
-    import { consociations } from "../store/store";
+    import consociations from "../store/store";
 
     let result = null;
     let loading = false;

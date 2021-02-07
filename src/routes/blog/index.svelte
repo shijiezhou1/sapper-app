@@ -10,7 +10,7 @@
 	import { onMount } from 'svelte';
 	import { fetchMedium } from "@/store/api";
 	import Loader from "@/components/Loader.svelte";
-	import { medium } from "@/store/store";
+	import medium from "@/store/store";
 	import Quota from "@/components/Quota.svelte";
 
 	let result = null;
