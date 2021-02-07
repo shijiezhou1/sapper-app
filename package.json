@@ -1,6 +1,6 @@
 {
   "name": "SapperApp",
-  "description": "TODO",
+  "description": "It is all the project to show portfolio.",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
@@ -36,6 +36,7 @@
     "gh-pages": "^3.1.0",
     "node-sass": "^5.0.0",
     "rollup": "^2.3.4",
+    "rollup-plugin-strip": "^1.2.2",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.0",
