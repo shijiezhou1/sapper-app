@@ -2,6 +2,12 @@
     const title = "SHIJIE ZHOU | CV";
 
     export const url = 'https://cdn.jsdelivr.net/gh/shijiezhou1/Artemis@master/img/SHIJIE ZHOU RESUME.pdf';
+
+    let curWidth;
+
+    const handleResize = () => {
+        curWidth = window.innerWidth;
+    };
 </script>
 
 <style lang="scss">
@@ -21,10 +27,22 @@
   <title>{title}</title>
 </svelte:head>
 
+<svelte:window on:resize={handleResize}/>
 
-<iframe frameborder="0" height="100%"
-        src="{url}"
-        class="cv-iframe"
-        title="cv"
-        scrolling="no"
-></iframe>
+{#if curWidth % 2 === 0}
+  <iframe frameborder="0" height="100%" width="{curWidth + 'px'}"
+          src="{url}"
+          class="cv-iframe"
+          title="cv"
+          scrolling="no"
+  ></iframe>
+{/if}
+
+{#if curWidth % 2 !== 0}
+  <iframe frameborder="0" height="100%" width="{curWidth + 'px'}"
+          src="{url}"
+          class="cv-iframe"
+          title="cv"
+          scrolling="no"
+  ></iframe>
+{/if}
