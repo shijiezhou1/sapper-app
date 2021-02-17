@@ -1,6 +1,7 @@
 <script>
 	import { items } from "./project/items.js";
 	import Prometheus from '../components/Prometheus.svelte';
+	import IndexMeta from '../components/IndexMeta.svelte';
 
 	let title = 'SHIJIE ZHOU | Home';
 
@@ -21,7 +22,7 @@
 
 <svelte:head>
 	<title>{title}</title>
-	<meta property="og:image" content="logo-192.png" />
+	<IndexMeta />
 </svelte:head>
 
 
