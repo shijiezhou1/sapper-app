@@ -1,4 +1,4 @@
-<meta property="og:image" content="logo-192.png" />
+<meta property="og:image" content="https://shijiezhou.com/logo-192.png" />
 <meta
   name="description"
   content="Shijie Zhou Portfolio Website, he is over 4 years of experience in Web Development using HTML5/4, CSS3/2, JavaScript, TypeScript, jQuery, AJAX, JSON, LESS/SASS, Bootstrap, D3.js and ReactJS, VueJS.
