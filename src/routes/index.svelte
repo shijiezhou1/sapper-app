@@ -21,6 +21,7 @@
 
 <svelte:head>
 	<title>{title}</title>
+	<meta property="og:image" content="logo-192.png" />
 </svelte:head>
 
 
