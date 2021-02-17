@@ -65,6 +65,7 @@
     <!-- End 33Across SiteCTRL -->
     <meta name="robots" content="noarchive">
     <Nav {navigations} {segment}/>
+    <meta property="og:image" content="logo-192.png" />
   </header>
   <main>
     <slot></slot>
