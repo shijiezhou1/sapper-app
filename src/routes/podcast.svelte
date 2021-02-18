@@ -5,14 +5,12 @@
     import Prometheus from "@/components/Prometheus.svelte";
     import {podcasts} from "../store/store";
 
-    let result = null;
     let loading = false;
     const title = "SHIJIE ZHOU | Podcast";
 
     onMount( async () => {
         loading = true;
         await fetchPodcasts().then( ( r ) => {
-            result = r;
             podcasts.set( r );
             loading = false;
         } );
