@@ -238,4 +238,10 @@
       }
     }
   }
+
+  @media (max-width: 414px) {
+    .subMenu {
+      background-color: white;
+    }
+  }
 </style>
