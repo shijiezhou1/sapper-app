@@ -5,14 +5,12 @@
     import Prometheus from "@/components/Prometheus.svelte";
     import {consociations} from "../store/store";
 
-    let result = null;
     let loading = false;
     const title = "SHIJIE ZHOU | Consociation";
 
     onMount( async () => {
         loading = true;
         await fetchConsociations().then( ( r ) => {
-            result = r;
             consociations.set( r );
             loading = false;
         } );
