@@ -2,6 +2,7 @@
     import { Stretch } from 'svelte-loading-spinners';
 
     export let loading;
+    export let loadingStyle;
 </script>
 
 <style>
@@ -16,7 +17,7 @@
 </style>
 
 {#if loading}
-  <div class="loader-position">
+  <div class="loader-position" style="{loadingStyle}">
     <Stretch size="60" color="#FF3E00" unit="px"></Stretch>
   </div>
 {/if}
