@@ -12,14 +12,6 @@
 	$: watchTitle();
 </script>
 
-<style lang="scss">
-	@media (min-width: 480px) {
-		h1 {
-		}
-	}
-
-</style>
-
 <svelte:head>
 	<title>{title}</title>
 	<IndexMeta />
