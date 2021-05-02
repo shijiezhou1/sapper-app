@@ -5,7 +5,7 @@
   export let loadingStyle;
 </script>
 
-{#if loading}
+{#if true}
   <div class="loader-position" style={loadingStyle}>
     <div class="lds-facebook">
       <div />
@@ -16,20 +16,25 @@
   </div>
 {/if}
 
-<style>
+<style lang="scss">
   .loader-position {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top:50%;
+    left: 45%;
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+
+    @media (max-width: 414px) {
+      top: 45%;
+      left: 36%;
+    }
   }
   .lds-facebook {
-    display: inline-block;
+    /* display: inline-block;
     position: relative;
-    width: 60px;
-    height: 100px;
+    width: 100%;
+    height: 100%; */
   }
   .lds-facebook div {
     display: inline-block;
