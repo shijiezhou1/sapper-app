@@ -2,7 +2,7 @@
   // import { Stretch } from 'svelte-loading-spinners';
 
   export let loading;
-  export let loadingStyle = null;
+  export let loadingStyle;
 </script>
 
 {#if loading}
@@ -21,6 +21,7 @@
     position: fixed;
     top:50%;
     left: 45%;
+    z-index: 1;
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
