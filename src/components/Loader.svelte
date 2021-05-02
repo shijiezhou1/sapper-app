@@ -2,10 +2,10 @@
   // import { Stretch } from 'svelte-loading-spinners';
 
   export let loading;
-  export let loadingStyle;
+  export let loadingStyle = null;
 </script>
 
-{#if true}
+{#if loading}
   <div class="loader-position" style={loadingStyle}>
     <div class="lds-facebook">
       <div />
