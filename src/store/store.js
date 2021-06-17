@@ -8,28 +8,19 @@ const creator = () => {
     return { subscribe, set, update, };
 };
 
-function createArticles() {
-    return creator();
-}
+const createArticles = () => creator();
 
 export const articles = createArticles();
 
-function createBooks() {
-    return creator();
-}
+const createBooks = () => creator();
 
 export const books = createBooks();
 
-function createPodcasts() {
-    return creator();
-}
+const createPodcasts = () => creator();
 
 export const podcasts = createPodcasts();
 
-
-function createConsociation() {
-    return creator();
-}
+const createConsociation = () => creator();
 
 export const consociations = createConsociation();
 
