@@ -24,7 +24,6 @@
 		await fetchMedium().then( ( r ) => {
 			result = r;
 			medium.set( r );
-			console.log( { medium: $medium } )
 			loading = false;
 		} );
 	} );

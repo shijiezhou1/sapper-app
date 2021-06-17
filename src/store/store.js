@@ -14,7 +14,6 @@ function createArticles() {
 
 export const articles = createArticles();
 
-
 function createBooks() {
     return creator();
 }
@@ -34,8 +33,6 @@ function createConsociation() {
 
 export const consociations = createConsociation();
 
-function createMedium() {
-    return creator();
-}
+const createMedium = () => creator();
 
 export const medium = createMedium();
