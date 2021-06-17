@@ -111,6 +111,10 @@
       }
     }
 
+    a {
+      color: initial;
+    }
+
 
     &.logo {
       display: flex;
