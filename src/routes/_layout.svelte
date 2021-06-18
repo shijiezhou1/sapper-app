@@ -9,7 +9,8 @@
     export let segment;
 </script>
 
-<style lang="scss">
+<style lang="scss" global>
+   @import "../style/global.scss";
   .app-container {
     flex: 1 1 auto;
     -webkit-backface-visibility: hidden;

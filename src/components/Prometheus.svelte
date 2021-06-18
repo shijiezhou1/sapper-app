@@ -8,6 +8,7 @@
 
 <style lang="scss">
   .gallery {
+    height: 100%;
     justify-content: center;
     max-width: 768px;
     display: flex;
@@ -17,8 +18,8 @@
 
     div {
       position: relative;
-      width: 180px;
-      height: 180px;
+      width: 200px;
+      height: 200px;
       padding: 10px;
 
       img {
