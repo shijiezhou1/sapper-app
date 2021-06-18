@@ -15,7 +15,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import strip from 'rollup-plugin-strip';
 
 // compress
-import {uglify} from 'rollup-plugin-uglify';
+// import {uglify} from 'rollup-plugin-uglify';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -47,7 +47,7 @@ export default {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
-			uglify(),
+			// uglify(),
 			alias({
 				entries,
 				customResolver
@@ -120,7 +120,7 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
-			uglify(),
+			// uglify(),
 			alias({
 				entries,
 				customResolver
