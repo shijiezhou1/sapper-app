@@ -1,4 +1,5 @@
 <script>
+    import IndexMeta from '../components/IndexMeta.svelte';
     const title = "SHIJIE ZHOU | CV";
 
     export const url = 'https://cdn.jsdelivr.net/gh/shijiezhou1/Artemis@master/img/SHIJIE ZHOU RESUME.pdf';
@@ -25,6 +26,7 @@
 
 <svelte:head>
   <title>{title}</title>
+  <IndexMeta />
 </svelte:head>
 
 <svelte:window on:resize={handleResize}/>
