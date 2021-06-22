@@ -49,7 +49,7 @@
                on:click={()=>handleShowNav(i)}
                href="{_.path}">{_.text}</a>
           {#if ( _.subMenu && i === showChild ) }
-            <div class="subMenu" use:clickOutside on:clickOutside={handleCloseSubMenu} 
+            <div class="subMenu {showDarkMode}" use:clickOutside on:clickOutside={handleCloseSubMenu} 
               on:mouseleave={() => handleShowNav(null)}>
               {#each _.subMenu as _, i}
                 <a class="subMenu-row" href="{_.path}" on:click={handleCloseSubMenu}>{_.text}</a>
@@ -102,7 +102,16 @@
   li {
     list-style: none;
     background-color:inherit;
+    .subMenu {
+      &.false {
+        background-color: white;
+      }
 
+      &.true {
+        background-color: black;
+      }
+    }
+    
     @media (min-width: 414px) {
       &:hover {
         .subMenu {
