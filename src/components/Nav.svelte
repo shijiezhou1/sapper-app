@@ -62,14 +62,6 @@
           <a href={_.path} on:mouseover={() => handleShowDarkMode(true)} >
             <img src={_.img} alt="{_.img}">
           </a>
-          {#if showDarkMode}
-          <div class="dark-mode">
-            <label class="switch">
-              <input type="checkbox" on:click={()=>handleDarkMode()}>
-              <span class="slider round"></span>
-            </label>
-          </div>
-          {/if}
         </li>
       {/if}
     {/each}
@@ -134,7 +126,7 @@
 
       img {
         width: 80px;
-        height: 30px;
+        height: 32px;
       }
 
       a {
