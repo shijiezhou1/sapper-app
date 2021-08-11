@@ -1,68 +1,92 @@
 <script>
+  import Fa from 'svelte-fa';
 
-    import Fa from 'svelte-fa';
+  import {
+    faGithub,
+    faGitlab,
+    faLinkedin,
+    faMedium,
+    faPinterest,
+    faStackOverflow,
+    faTumblrSquare,
+    faTwitter,
+  } from '@fortawesome/free-brands-svg-icons';
 
-    import {
-        faGithub,
-        faGitlab,
-        faLinkedin,
-        faMedium,
-        faPinterest,
-        faStackOverflow,
-        faTumblrSquare,
-        faTwitter,
-    } from "@fortawesome/free-brands-svg-icons";
+  import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
-    import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+  import { fetchSubscribe } from '@/store/api';
 
-    const socialItem = [
-        {
-            name: faGitlab,
-            url: 'https://gitlab.com/shijiezhou1',
-            color: '#fa6d25'
-        },
-        {
-            name: faMedium,
-            url: 'https://medium.com/@.jay',
-            color: '#000000'
-        },
-        {
-            name: faLinkedin,
-            url: 'https://www.linkedin.com/in/shijiezhou1/',
-            color: '#0a66c2'
-        },
-        {
-            name: faGithub,
-            url: 'https://github.com/shijiezhou1',
-            color: '#000000'
-        },
-        {
-            name: faTwitter,
-            url: 'https://twitter.com/ShijieZhou5',
-            color: '#1ea1f2'
-        },
-        {
-            name: faPinterest,
-            url: 'https://www.pinterest.com/cs5129606/',
-            color: '#e60023'
-        },
-        {
-            name: faStackOverflow,
-            url: 'https://stackoverflow.com/users/10401645',
-            color: '#f48023'
-        },
-        {
-            name: faTumblrSquare,
-            url: 'https://shijiezhou.tumblr.com/',
-            color: '#000000'
-        },
-    ];
+  let inputValue = '';
 
-    function handleClick() {
-        alert( 'Subscribed!' );
-    }
+  const socialItem = [
+    {
+      name: faGitlab,
+      url: 'https://gitlab.com/shijiezhou1',
+      color: '#fa6d25',
+    },
+    {
+      name: faMedium,
+      url: 'https://medium.com/@.jay',
+      color: '#000000',
+    },
+    {
+      name: faLinkedin,
+      url: 'https://www.linkedin.com/in/shijiezhou1/',
+      color: '#0a66c2',
+    },
+    {
+      name: faGithub,
+      url: 'https://github.com/shijiezhou1',
+      color: '#000000',
+    },
+    {
+      name: faTwitter,
+      url: 'https://twitter.com/ShijieZhou5',
+      color: '#1ea1f2',
+    },
+    {
+      name: faPinterest,
+      url: 'https://www.pinterest.com/cs5129606/',
+      color: '#e60023',
+    },
+    {
+      name: faStackOverflow,
+      url: 'https://stackoverflow.com/users/10401645',
+      color: '#f48023',
+    },
+    {
+      name: faTumblrSquare,
+      url: 'https://shijiezhou.tumblr.com/',
+      color: '#000000',
+    },
+  ];
+
+  async function handleClick() {
+  
+    const data = {
+      email: inputValue,
+    };
+    await fetchSubscribe(data).then((r) => {
+      console.log(r);
+      alert( 'Subscribed successfully!' );
+    });
+  }
 </script>
 
+<div class="subscribe">
+  <input placeholder="Email to subscribe" type="text" bind:value={inputValue} />
+  <div on:click={handleClick}>
+    <Fa color="red" icon={faEnvelope} size="2x" />
+  </div>
+</div>
+
+<div class="social-medias">
+  {#each socialItem as _, i}
+    <a href={_.url} target="_blank">
+      <Fa icon={_.name} color={_.color} size="2x" />
+    </a>
+  {/each}
+</div>
 
 <style lang="scss">
   input[type='text'] {
@@ -108,19 +132,3 @@
     }
   }
 </style>
-
-<div class="subscribe">
-  <input placeholder="Email to subscribe" type="text">
-  <div on:click={handleClick}>
-    <Fa color="red" icon={faEnvelope} size="2x"/>
-  </div>
-</div>
-
-
-<div class="social-medias">
-  {#each socialItem as _, i}
-    <a href="{_.url}" target="_blank">
-      <Fa icon={_.name} color="{_.color}" size="2x"/>
-    </a>
-  {/each}
-</div>
