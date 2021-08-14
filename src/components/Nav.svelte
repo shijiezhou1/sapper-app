@@ -4,8 +4,6 @@
   import { clickOutside } from '../utils/clickOutside.js';
 
   let showChild = null;
-  let showDarkMode = false;
-  let darkMode = false;
 
   function handleShowNav(index) {
     showChild = index;
@@ -13,28 +11,6 @@
 
   function handleCloseSubMenu() {
     showChild = null;
-  }
-
-  function handleShowDarkMode(val) {
-    showDarkMode = val;
-  }
-
-  function handleDarkMode() {
-    const nav = document.getElementsByTagName('nav')[0];
-    if (!darkMode) {
-      document.body.style.backgroundColor = 'black';
-      document.body.style.color = 'white';
-      darkMode = true;
-      nav.style.backgroundColor = 'black';
-      nav.style.color = 'white';
-    } else {
-      document.body.style.backgroundColor = 'white';
-      document.body.style.color = 'black';
-      darkMode = false;
-      nav.style.backgroundColor = 'white';
-      nav.style.color = 'black';
-      nav.setAttribute('data-theme', 'light');
-    }
   }
 </script>
 
@@ -53,7 +29,7 @@
           >
           {#if _.subMenu && i === showChild}
             <div
-              class="subMenu {showDarkMode}"
+              class="subMenu"
               use:clickOutside
               on:clickOutside={handleCloseSubMenu}
               on:mouseleave={() => handleShowNav(null)}
@@ -69,8 +45,8 @@
           {/if}
         </li>
       {:else}
-        <li class="logo" on:mouseleave={() => handleShowDarkMode(false)}>
-          <a href={_.path} on:mouseover={() => handleShowDarkMode(true)}>
+        <li class="logo">
+          <a href={_.path}>
             <img src={_.img} alt={_.img} />
           </a>
         </li>
@@ -104,16 +80,6 @@
   li {
     list-style: none;
     background-color: inherit;
-    .subMenu {
-      &.false {
-        background-color: white;
-      }
-
-      &.true {
-        background-color: black;
-      }
-    }
-
     @media (min-width: 414px) {
       &:hover {
         .subMenu {
