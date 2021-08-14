@@ -1,42 +1,41 @@
 <script>
-    export let segment;
-    export let navigations;
-    import { clickOutside } from '../utils/clickOutside.js';
+  export let segment;
+  export let navigations;
+  import { clickOutside } from '../utils/clickOutside.js';
 
-    let showChild = null;
-    let showDarkMode = false;
-    let darkMode = false;
-  
-    function handleShowNav( index ) {
-        showChild = index;
+  let showChild = null;
+  let showDarkMode = false;
+  let darkMode = false;
+
+  function handleShowNav(index) {
+    showChild = index;
+  }
+
+  function handleCloseSubMenu() {
+    showChild = null;
+  }
+
+  function handleShowDarkMode(val) {
+    showDarkMode = val;
+  }
+
+  function handleDarkMode() {
+    const nav = document.getElementsByTagName('nav')[0];
+    if (!darkMode) {
+      document.body.style.backgroundColor = 'black';
+      document.body.style.color = 'white';
+      darkMode = true;
+      nav.style.backgroundColor = 'black';
+      nav.style.color = 'white';
+    } else {
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+      darkMode = false;
+      nav.style.backgroundColor = 'white';
+      nav.style.color = 'black';
+      nav.setAttribute('data-theme', 'light');
     }
-
-    function handleCloseSubMenu() {
-        showChild = null;
-    }
-
-    function handleShowDarkMode(val) {
-      showDarkMode = val;
-    }
-
-    function handleDarkMode() {
-      const nav = document.getElementsByTagName('nav')[0];
-      if (!darkMode) {
-        document.body.style.backgroundColor = "black";
-        document.body.style.color = "white";
-        darkMode = true;
-        nav.style.backgroundColor = "black";
-        nav.style.color = "white";
-      } else {
-        document.body.style.backgroundColor = "white";
-        document.body.style.color = "black";
-        darkMode = false;
-        nav.style.backgroundColor = "white";
-        nav.style.color = "black";
-        nav.setAttribute('data-theme', 'light');
-      }
-    }
-
+  }
 </script>
 
 <nav data-theme="light">
@@ -44,23 +43,35 @@
     <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
          the blog data when we hover over the link or tap it on a touchscreen -->
     {#each navigations as _, i}
-      {#if _.text !== 'Home' }
-        <li on:mouseover={() => handleShowNav(i)}><a rel=prefetch aria-current="{segment === _.text.toLowerCase() ? 'page' : undefined}"
-               on:click={()=>handleShowNav(i)}
-               href="{_.path}">{_.text}</a>
-          {#if ( _.subMenu && i === showChild ) }
-            <div class="subMenu {showDarkMode}" use:clickOutside on:clickOutside={handleCloseSubMenu} 
-              on:mouseleave={() => handleShowNav(null)}>
+      {#if _.text !== 'Home'}
+        <li on:mouseover={() => handleShowNav(i)}>
+          <a
+            rel="prefetch"
+            aria-current={segment === _.text.toLowerCase() ? 'page' : undefined}
+            on:click={() => handleShowNav(i)}
+            href={_.path}>{_.text}</a
+          >
+          {#if _.subMenu && i === showChild}
+            <div
+              class="subMenu {showDarkMode}"
+              use:clickOutside
+              on:clickOutside={handleCloseSubMenu}
+              on:mouseleave={() => handleShowNav(null)}
+            >
               {#each _.subMenu as _, i}
-                <a class="subMenu-row" href="{_.path}" on:click={handleCloseSubMenu}>{_.text}</a>
+                <a
+                  class="subMenu-row"
+                  href={_.path}
+                  on:click={handleCloseSubMenu}>{_.text}</a
+                >
               {/each}
             </div>
           {/if}
         </li>
       {:else}
         <li class="logo" on:mouseleave={() => handleShowDarkMode(false)}>
-          <a href={_.path} on:mouseover={() => handleShowDarkMode(true)} >
-            <img src={_.img} alt="{_.img}">
+          <a href={_.path} on:mouseover={() => handleShowDarkMode(true)}>
+            <img src={_.img} alt={_.img} />
           </a>
         </li>
       {/if}
@@ -68,11 +79,10 @@
   </ul>
 </nav>
 
-
 <style lang="scss">
   nav {
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
-    background-color:var(--bg-color);
+    background-color: var(--bg-color);
     color: var(--bg-text);
   }
 
@@ -81,7 +91,7 @@
     padding: 0 10px;
     display: flex;
     flex-direction: row;
-    background-color:inherit;
+    background-color: inherit;
   }
 
   /* clearfix */
@@ -93,7 +103,7 @@
 
   li {
     list-style: none;
-    background-color:inherit;
+    background-color: inherit;
     .subMenu {
       &.false {
         background-color: white;
@@ -103,7 +113,7 @@
         background-color: black;
       }
     }
-    
+
     @media (min-width: 414px) {
       &:hover {
         .subMenu {
@@ -115,7 +125,6 @@
     a {
       color: initial;
     }
-
 
     &.logo {
       display: flex;
@@ -137,72 +146,72 @@
         margin: 0;
       }
 
-      .dark-mode {
-        position: absolute;
-        margin-top: 86px;
-        @media (max-width: 414px) {
-          display: none;
-        }
+      // .dark-mode {
+      //   position: absolute;
+      //   margin-top: 86px;
+      //   @media (max-width: 414px) {
+      //     display: none;
+      //   }
 
-      .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 28px;
-      }
+      //   .switch {
+      //     position: relative;
+      //     display: inline-block;
+      //     width: 60px;
+      //     height: 28px;
+      //   }
 
-      .switch input { 
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
+      //   .switch input {
+      //     opacity: 0;
+      //     width: 0;
+      //     height: 0;
+      //   }
 
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-      }
+      //   .slider {
+      //     position: absolute;
+      //     cursor: pointer;
+      //     top: 0;
+      //     left: 0;
+      //     right: 0;
+      //     bottom: 0;
+      //     background-color: #ccc;
+      //     -webkit-transition: 0.4s;
+      //     transition: 0.4s;
+      //   }
 
-      .slider:before {
-        position: absolute;
-        content: "";
-        height: 20px;
-        width: 20px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-      }
+      //   .slider:before {
+      //     position: absolute;
+      //     content: '';
+      //     height: 20px;
+      //     width: 20px;
+      //     left: 4px;
+      //     bottom: 4px;
+      //     background-color: white;
+      //     -webkit-transition: 0.4s;
+      //     transition: 0.4s;
+      //   }
 
-      input:checked + .slider {
-        background-color: black;
-      }
+      //   input:checked + .slider {
+      //     background-color: black;
+      //   }
 
-      input:focus + .slider {
-        box-shadow: 0 0 1px black;
-      }
+      //   input:focus + .slider {
+      //     box-shadow: 0 0 1px black;
+      //   }
 
-      input:checked + .slider:before {
-        -webkit-transform: translateX(32px);
-        -ms-transform: translateX(32px);
-        transform: translateX(32px);
-      }
+      //   input:checked + .slider:before {
+      //     -webkit-transform: translateX(32px);
+      //     -ms-transform: translateX(32px);
+      //     transform: translateX(32px);
+      //   }
 
-      .slider.round {
-        border-radius: 34px;
-      }
+      //   .slider.round {
+      //     border-radius: 34px;
+      //   }
 
-      .slider.round:before {
-        border-radius: 50%;
-      }
-      }
+      //   .slider.round:before {
+      //     border-radius: 50%;
+      //   }
+      // }
     }
   }
 
