@@ -27,3 +27,7 @@ export const consociations = createConsociation();
 const createMedium = () => creator();
 
 export const medium = createMedium();
+
+const createCDNPath =  () => creator();
+
+export const cdnPath = createCDNPath();

@@ -1,16 +1,10 @@
 export const VUE_APP_GITHUB_CDN = 'https://raw.githubusercontent.com/shijiezhou1/Artemis/master/';
-// export const API_URL = 'https://shijiezhou.herokuapp.com/api/';
+export const VUE_APP_GITEE_CDN = 'https://gitee.com/cs5129606/Artemis/raw/master/';
 export const API_URL = 'https://api.shijiezhou.com/api/';
 
 export const navigations = [
     {
         text: 'Project', path: '/project', subMenu: [
-            // {
-            //     type: 'link',
-            //     text: 'Expedition',
-            //     path: './expedition',
-            //     iconLeft: '<i class="fa fa-user fa-fw"></i>'
-            // },
             {
                 type: 'link',
                 text: 'Collection',

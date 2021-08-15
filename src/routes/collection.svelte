@@ -1,7 +1,17 @@
 <script>
     import Quota from "../components/Quota.svelte";
     import { Swipe, SwipeItem } from "svelte-swipe";
-    import { VUE_APP_GITHUB_CDN } from "../config";
+    import { VUE_APP_GITHUB_CDN, VUE_APP_GITEE_CDN } from "../config";
+    import { fetchCurrentAddress } from '@/store/api';
+    import { onMount } from 'svelte';
+
+    let pick = VUE_APP_GITHUB_CDN;
+
+    onMount(async () => {
+      await fetchCurrentAddress().then((r) => {
+        pick = r === null ? VUE_APP_GITHUB_CDN : VUE_APP_GITEE_CDN;
+      });
+    });
 
     const swipeConfig = {
         autoplay: false,
@@ -12,11 +22,11 @@
     };
 
     const slides = [
-        { src: VUE_APP_GITHUB_CDN + "img/collection1.jpg" },
-        { src: VUE_APP_GITHUB_CDN + "img/collection2.jpg" },
-        { src: VUE_APP_GITHUB_CDN + "img/collection3.jpg" },
-        { src: VUE_APP_GITHUB_CDN + "img/collection4.jpg" },
-        { src: VUE_APP_GITHUB_CDN + "img/collection5.jpg" },
+        { src: pick + "img/collection1.jpg" },
+        { src: pick + "img/collection2.jpg" },
+        { src: pick + "img/collection3.jpg" },
+        { src: pick + "img/collection4.jpg" },
+        { src: pick + "img/collection5.jpg" },
     ]
 
     const title = "SHIJIE ZHOU | Collection";

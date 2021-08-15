@@ -4,16 +4,16 @@ const getCurrentIp = async () => {
     const res = await fetch('https://txt.go.sohu.com/ip/soip');
     const text = await res.text();
     if (res.ok) {
+        let ans = null;
         const findKey = ';sohu_IP_Loc=';
         const foundIndex = text.indexOf(findKey);
         const firstLetter = text[foundIndex + findKey.length + 1];
         const secondLetter = text[foundIndex + findKey.length + 2];
-        if (firstLetter + secondLetter === "CN") {
-            // china region
-        } else {
-            // global access
+
+        if (firstLetter&&secondLetter&&firstLetter + secondLetter === "CN") {
+            ans = 'CN';
         }
-        return text;
+        return ans;
     } else {
         throw new Error(json);
     }
