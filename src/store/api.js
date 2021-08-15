@@ -1,4 +1,5 @@
 import { API_URL } from "../config";
+import { VUE_APP_GITHUB_CDN, VUE_APP_GITEE_CDN } from "../config";
 
 const getCurrentIp = async () => {
     const res = await fetch('https://txt.go.sohu.com/ip/soip');
@@ -17,6 +18,16 @@ const getCurrentIp = async () => {
     } else {
         throw new Error(json);
     }
+}
+
+const getCollection = async () => {
+    let slides = [];
+    const condition = await getCurrentIp();
+    const pick = condition === 'CN' ? VUE_APP_GITEE_CDN : VUE_APP_GITHUB_CDN;
+    for (let i = 1; i <= 5; i++) {
+        slides.push({ src: pick + `img/collection${i}.jpg` });
+    }
+    return slides;
 }
 
 const getByUrl = async (url) => {
@@ -52,6 +63,7 @@ export const fetchBooks = async () => getByUrl(`${API_URL}books`);
 export const fetchPodcasts = async () => getByUrl(`${API_URL}podcasts`);
 export const fetchConsociations = async () => getByUrl(`${API_URL}consociation`);
 export const fetchMedium = async () => getByUrl(`${API_URL}medium`);
+export const fetchCollection = async () => getCollection();
 
 export const fetchSubscribe = async (data) => postEmailSubscribe(`${API_URL}subscribe`, data);
 export const fetchCurrentAddress = async () => getCurrentIp();

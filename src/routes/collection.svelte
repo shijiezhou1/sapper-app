@@ -1,15 +1,14 @@
 <script>
     import Quota from "../components/Quota.svelte";
     import { Swipe, SwipeItem } from "svelte-swipe";
-    import { VUE_APP_GITHUB_CDN, VUE_APP_GITEE_CDN } from "../config";
-    import { fetchCurrentAddress } from '@/store/api';
+    import { fetchCollection } from '@/store/api';
     import { onMount } from 'svelte';
 
-    let pick = VUE_APP_GITHUB_CDN;
+    let slides = [];
 
     onMount(async () => {
-      await fetchCurrentAddress().then((r) => {
-        pick = r === null ? VUE_APP_GITHUB_CDN : VUE_APP_GITEE_CDN;
+      await fetchCollection().then((res) => {
+        slides = res;
       });
     });
 
@@ -20,14 +19,6 @@
         transitionDuration: 1000,
         defaultIndex: 0,
     };
-
-    const slides = [
-        { src: pick + "img/collection1.jpg" },
-        { src: pick + "img/collection2.jpg" },
-        { src: pick + "img/collection3.jpg" },
-        { src: pick + "img/collection4.jpg" },
-        { src: pick + "img/collection5.jpg" },
-    ]
 
     const title = "SHIJIE ZHOU | Collection";
     const quote = "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.";
@@ -58,6 +49,7 @@
 
 <Quota {brief} {quote} title="Collection:"/>
 
+{#if slides.length > 0}
 <div class="swipe-holder">
   <Swipe {...swipeConfig}>
     {#each slides as _, i}
@@ -67,3 +59,4 @@
     {/each}
   </Swipe>
 </div>
+{/if}
