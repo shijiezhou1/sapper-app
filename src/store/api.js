@@ -1,10 +1,19 @@
 import { API_URL } from "../config";
 
 const getCurrentIp = async () => {
-    const res = await fetch('http://ip-api.com/json/');
-    const json = await res.json();
+    const res = await fetch('https://txt.go.sohu.com/ip/soip');
+    const text = await res.text();
     if (res.ok) {
-        return json;
+        const findKey = ';sohu_IP_Loc=';
+        const foundIndex = text.indexOf(findKey);
+        const firstLetter = text[foundIndex + findKey.length + 1];
+        const secondLetter = text[foundIndex + findKey.length + 2];
+        if (firstLetter + secondLetter === "CN") {
+            // china region
+        } else {
+            // global access
+        }
+        return text;
     } else {
         throw new Error(json);
     }

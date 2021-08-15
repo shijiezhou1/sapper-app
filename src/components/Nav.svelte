@@ -20,7 +20,7 @@
          the blog data when we hover over the link or tap it on a touchscreen -->
     {#each navigations as _, i}
       {#if _.text !== 'Home'}
-        <li on:mouseover={() => handleShowNav(i)}>
+        <li on:foucus:mouseover={() => handleShowNav(i)}>
           <a
             rel="prefetch"
             aria-current={segment === _.text.toLowerCase() ? 'page' : undefined}
