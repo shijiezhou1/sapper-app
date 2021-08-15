@@ -1,10 +1,18 @@
 <script>
+    import { onMount } from 'svelte';
     import Nav from '../components/Nav.svelte';
     import { navigations } from '../config/index';
     import GoogleAnalytics from "sapper-google-analytics/GoogleAnalytics.svelte"
-    import { stores } from "@sapper/app"
+    import { stores } from "@sapper/app";
+    import { fetchCurrentAddress } from "@/store/api";
 
     let ga_measurment_id = "UA-149847604-1";
+
+    onMount( async () => {
+        await fetchCurrentAddress().then( ( r ) => {
+          console.log(r.countryCode);
+        } );
+    } );
 
     export let segment;
 </script>
@@ -73,7 +81,7 @@
       posthog.init('Y0ZSmyFb3y8qj2AqwZBYNKa-xoRH4qgzpoKu_mH-9Sk',{api_host:'https://app.posthog.com'})
     </script>
     <!-- Google AdSense -->
-    <script data-ad-client="ca-pub-3054816686501642" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- <script data-ad-client="ca-pub-3054816686501642" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
     <!-- End posthog SiteCTRL -->
   </header>
   

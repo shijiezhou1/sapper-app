@@ -1,5 +1,15 @@
 import { API_URL } from "../config";
 
+const getCurrentIp = async () => {
+    const res = await fetch('http://ip-api.com/json/');
+    const json = await res.json();
+    if (res.ok) {
+        return json;
+    } else {
+        throw new Error(json);
+    }
+}
+
 const getByUrl = async (url) => {
     const res = await fetch(url);
     const json = await res.json();
@@ -35,3 +45,4 @@ export const fetchConsociations = async () => getByUrl(`${API_URL}consociation`)
 export const fetchMedium = async () => getByUrl(`${API_URL}medium`);
 
 export const fetchSubscribe = async (data) => postEmailSubscribe(`${API_URL}subscribe`, data);
+export const fetchCurrentAddress = async () => getCurrentIp();
