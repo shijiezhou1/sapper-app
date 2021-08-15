@@ -18,6 +18,7 @@ import strip from 'rollup-plugin-strip';
 // import {uglify} from 'rollup-plugin-uglify';
 
 const mode = process.env.NODE_ENV;
+
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
@@ -95,7 +96,7 @@ export default {
 				module: true
 			}),
 
-			strip({
+			!dev && strip({
 				// set this to `false` if you don't want to
 				// remove debugger statements
 				debugger: true,
@@ -150,7 +151,7 @@ export default {
 			}),
 			commonjs(),
 
-			strip({
+			!dev && strip({
 				// set this to `false` if you don't want to
 				// remove debugger statements
 				debugger: true,
