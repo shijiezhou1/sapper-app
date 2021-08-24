@@ -52,5 +52,5 @@ export const navigations = [
     },
     { text: 'CV', path: '/cv' },
     { text: 'Contact', path: '/contact' },
-    { text: 'Home', path: '/', img: 'images/logo.png' }
+    { text: 'Home', path: '/', img: 'https://cdn.jsdelivr.net/gh/shijiezhou1/Artemis@master/img/logo-text.png' }
 ]
