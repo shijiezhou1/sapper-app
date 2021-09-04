@@ -26,7 +26,7 @@
     },
     {
       name: faMedium,
-      url: 'https://medium.com/@.jay',
+      url: 'https://medium.com/@jay315',
       color: '#000000',
     },
     {
