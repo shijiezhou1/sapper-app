@@ -1,6 +1,6 @@
 <script>
     import Quota from "../components/Quota.svelte";
-
+    import IndexMeta from '../components/IndexMeta.svelte';
     const title = "SHIJIE ZHOU | About";
     const quote = "Every person has two education, one which he receives from other, and one, more important, which he gives himself.";
     const brief = "— Edward Gibbon, British historian";
@@ -8,7 +8,7 @@
 
 <svelte:head>
   <title>{title}</title>
-
+  <IndexMeta />
 </svelte:head>
 
 <Quota {brief} {quote} title="About:"/>

@@ -4,7 +4,7 @@
     import Loader from "@/components/Loader.svelte";
     import Prometheus from "@/components/Prometheus.svelte";
     import {books} from "@/store/store";
-
+    import IndexMeta from '../components/IndexMeta.svelte';
     let result = null;
     let loading = false;
     const title = "SHIJIE ZHOU | Book";
@@ -22,6 +22,7 @@
 
 <svelte:head>
   <title>{title}</title>
+  <IndexMeta />
 </svelte:head>
 
 <Loader {loading}/>
