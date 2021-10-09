@@ -2,19 +2,10 @@ import { API_URL } from "../config";
 import { VUE_APP_GITHUB_CDN, VUE_APP_GITEE_CDN } from "../config";
 
 const getCurrentIp = async () => {
-    const res = await fetch('https://txt.go.sohu.com/ip/soip');
+    const res = await fetch(API_URL+'geolocation/ipv4');
     const text = await res.text();
     if (res.ok) {
-        let ans = null;
-        const findKey = ';sohu_IP_Loc=';
-        const foundIndex = text.indexOf(findKey);
-        const firstLetter = text[foundIndex + findKey.length + 1];
-        const secondLetter = text[foundIndex + findKey.length + 2];
-
-        if (firstLetter&&secondLetter&&firstLetter + secondLetter === "CN") {
-            ans = 'CN';
-        }
-        return ans;
+        return text.country_iso_code === 'CH' ? 'CH' : 'EN';
     } else {
         throw new Error(json);
     }
