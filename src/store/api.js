@@ -56,5 +56,5 @@ export const fetchConsociations = async () => getByUrl(`${API_URL}consociation`)
 export const fetchMedium = async () => getByUrl(`${API_URL}medium`);
 export const fetchCollection = async () => getCollection();
 
-export const fetchSubscribe = async (data) => postEmailSubscribe(`${API_URL}subscribe`, data);
+export const fetchSubscribe = async (data) => postEmailSubscribe(`${API_URL}subscribe/hset`, data);
 export const fetchCurrentAddress = async () => getCurrentIp();
