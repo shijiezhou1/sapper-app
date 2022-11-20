@@ -25,7 +25,7 @@
             rel="prefetch"
             aria-current={segment === _.text.toLowerCase() ? 'page' : undefined}
             on:click={() => handleShowNav(i)}
-            href={_.path}>{_.text}</a
+            href={_.path}>{_.text.toUpperCase()}</a
           >
           {#if _.subMenu && i === showChild}
             <div
@@ -38,7 +38,7 @@
                 <a
                   class="subMenu-row"
                   href={_.path}
-                  on:click={handleCloseSubMenu}>{_.text}</a
+                  on:click={handleCloseSubMenu}>{_.text.toUpperCase()}</a
                 >
               {/each}
             </div>
