@@ -106,7 +106,7 @@
 	{#each $medium as _, index}
 		<div>
 			<a href="{_.link}">
-				<div class="blog-container-img" style="background-image: url('{getImageSource(_.content)}')"></div>
+				<div class="blog-container-img" style="background-image: url('{_.base64Data}')"></div>
 				<div class="blog-container-title">{_.contentSnippet}</div>
 			</a>
 			<div class="blog-container-pubtime">{_.pubDate} - {_.creator}</div>

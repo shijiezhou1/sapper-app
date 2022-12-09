@@ -53,7 +53,7 @@ export const fetchPosts = async () => getByUrl(`${API_URL}articles`);
 export const fetchBooks = async () => getByUrl(`${API_URL}books`);
 export const fetchPodcasts = async () => getByUrl(`${API_URL}podcasts`);
 export const fetchConsociations = async () => getByUrl(`${API_URL}consociation`);
-export const fetchMedium = async () => getByUrl(`${API_URL}medium`);
+export const fetchMedium = async () => getByUrl(`${API_URL}medium/cache`);
 export const fetchCollection = async () => getCollection();
 
 export const fetchSubscribe = async (data) => postEmailSubscribe(`${API_URL}subscribe/hset`, data);
