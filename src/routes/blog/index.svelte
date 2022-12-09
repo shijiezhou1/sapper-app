@@ -13,7 +13,6 @@
 	import {medium} from "@/store/store";
 	import Quota from "@/components/Quota.svelte";
 
-	let result = null;
 	let loading = false;
 	const title = 'SHIJIE ZHOU | Blog';
 	const quote = "Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.";
@@ -22,7 +21,6 @@
 	onMount( async () => {
 		loading = true;
 		await fetchMedium().then( ( r ) => {
-			result = r;
 			medium.set( r );
 			loading = false;
 		} );
