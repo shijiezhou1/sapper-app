@@ -1,15 +1,45 @@
 <script>
-    import IndexMeta from '../components/IndexMeta.svelte';
-    const title = "SHIJIE ZHOU | CV";
+  import IndexMeta from '../components/IndexMeta.svelte';
+  const title = 'SHIJIE ZHOU | CV';
+  import { RESUME_URL } from '../config/index';
 
-    export const url = 'https://cdn.jsdelivr.net/gh/shijiezhou1/Artemis@master/img/SHIJIE ZHOU RESUME.pdf';
+  let curWidth;
 
-    let curWidth;
-
-    const handleResize = () => {
-        curWidth = window.innerWidth;
-    };
+  const handleResize = () => {
+    curWidth = window.innerWidth;
+  };
 </script>
+
+<svelte:head>
+  <title>{title}</title>
+  <IndexMeta />
+</svelte:head>
+
+<svelte:window on:resize={handleResize} />
+
+{#if curWidth % 2 === 0}
+  <iframe
+    frameborder="0"
+    height="100%"
+    width={curWidth + 'px'}
+    src={RESUME_URL}
+    class="cv-iframe"
+    title="cv"
+    scrolling="no"
+  />
+{/if}
+
+{#if curWidth % 2 !== 0}
+  <iframe
+    frameborder="0"
+    height="100%"
+    width={curWidth + 'px'}
+    src={RESUME_URL}
+    class="cv-iframe"
+    title="cv"
+    scrolling="no"
+  />
+{/if}
 
 <style lang="scss">
   .cv-iframe {
@@ -23,28 +53,3 @@
     bottom: 0;
   }
 </style>
-
-<svelte:head>
-  <title>{title}</title>
-  <IndexMeta />
-</svelte:head>
-
-<svelte:window on:resize={handleResize}/>
-
-{#if curWidth % 2 === 0}
-  <iframe frameborder="0" height="100%" width="{curWidth + 'px'}"
-          src="{url}"
-          class="cv-iframe"
-          title="cv"
-          scrolling="no"
-  ></iframe>
-{/if}
-
-{#if curWidth % 2 !== 0}
-  <iframe frameborder="0" height="100%" width="{curWidth + 'px'}"
-          src="{url}"
-          class="cv-iframe"
-          title="cv"
-          scrolling="no"
-  ></iframe>
-{/if}

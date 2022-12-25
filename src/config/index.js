@@ -1,6 +1,7 @@
 export const VUE_APP_GITHUB_CDN = 'https://raw.githubusercontent.com/shijiezhou1/Artemis/master/';
 export const VUE_APP_GITEE_CDN = 'https://raw.staticdn.net/shijiezhou1/Artemis/master/';
 export const API_URL = 'https://api.shijiezhou.com/api/';
+export const RESUME_URL = 'https://cdn.jsdelivr.net/gh/shijiezhou1/Artemis@master/img/SHIJIE ZHOU RESUME.pdf';
 
 export const navigations = [
     {
