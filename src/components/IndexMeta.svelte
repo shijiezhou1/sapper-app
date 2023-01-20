@@ -15,6 +15,3 @@
   content="https://shijiezhou1.github.io/portfolio-v1/images/newlogo.png"
 />
 <meta property="og:image:alt" content="A image of SHIJIE ZHOU" />
-<!-- google adsenses -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1322891097402572"
-     crossorigin="anonymous"></script>
