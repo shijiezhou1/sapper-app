@@ -1,6 +1,6 @@
 <script>
   import { items } from './project/items.js';
-  import Prometheus from '../components/Prometheus.svelte';
+  // import Prometheus from '../components/Prometheus.svelte';
   import IndexMeta from '../components/IndexMeta.svelte';
 
   let title = 'SHIJIE ZHOU | Home';
@@ -20,4 +20,17 @@
   <IndexMeta />
 </svelte:head>
 
-<Prometheus items={newItem} />
+<!-- <Prometheus items={newItem} /> -->
+
+<iframe
+  src="https://news.shijiezhou.com/"  
+  title="Full-screen content"
+  style="
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    z-index: 9999;
+  "
+></iframe>
