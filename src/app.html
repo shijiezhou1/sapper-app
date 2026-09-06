@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta name="theme-color" content="#333333" />
+		<meta name="google-site-verification" content="wx61Emx_EU-6WI-CK7pOmwIjxU0U4dAhp_S9iiUcDrs" />
+
+		<link rel="stylesheet" href="%sveltekit.assets%/global.css" />
+		<link rel="manifest" href="%sveltekit.assets%/manifest.json" crossorigin="use-credentials" />
+		<link rel="icon" type="image/png" href="%sveltekit.assets%/favicon.png" />
+
+		<!-- Begin 33Across SiteCTRL -->
+		<script>
+			var Tynt = Tynt || [];
+			Tynt.push('c9ggSSzJar67HdaKjGFx_2');
+			(function () {
+				var h,
+					s = document.createElement('script');
+				s.src = 'https://cdn.tynt.com/ti.js';
+				h = document.getElementsByTagName('script')[0];
+				h.parentNode.insertBefore(s, h);
+			})();
+		</script>
+		<!-- End 33Across SiteCTRL -->
+
+		<!-- Begin posthog SiteCTRL -->
+		<script>
+			!(function (t, e) {
+				var o, n, p, r;
+				e.__SV ||
+					((window.posthog = e),
+					(e._i = []),
+					(e.init = function (i, s, a) {
+						function g(t, e) {
+							var o = e.split('.');
+							2 == o.length && ((t = t[o[0]]), (e = o[1])),
+								(t[e] = function () {
+									t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+								});
+						}
+						((p = t.createElement('script')).type = 'text/javascript'),
+							(p.async = !0),
+							(p.src = s.api_host + '/static/array.js'),
+							(r = t.getElementsByTagName('script')[0]).parentNode.insertBefore(p, r);
+						var u = e;
+						for (
+							void 0 !== a ? (u = e[a] = []) : (a = 'posthog'),
+								u.people = u.people || [],
+								u.toString = function (t) {
+									var e = 'posthog';
+									return (
+										'posthog' !== a && (e += '.' + a), t || (e += ' (stub)'), e
+									);
+								},
+								u.people.toString = function () {
+									return u.toString(1) + '.people (stub)';
+								},
+								o =
+									'capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags'.split(
+										' '
+									),
+								n = 0;
+							n < o.length;
+							n++
+						)
+							g(u, o[n]);
+						e._i.push([i, s, a]);
+					}),
+					(e.__SV = 1));
+			})(document, window.posthog || []);
+			posthog.init('Y0ZSmyFb3y8qj2AqwZBYNKa-xoRH4qgzpoKu_mH-9Sk', {
+				api_host: 'https://app.posthog.com'
+			});
+
+			// <!-- Pinterest Tag -->
+			!(function (e) {
+				if (!window.pintrk) {
+					window.pintrk = function () {
+						window.pintrk.queue.push(Array.prototype.slice.call(arguments));
+					};
+					var n = (window.pintrk = { queue: [] }),
+						t = document.createElement('script');
+					t.async = !0;
+					t.src = e;
+					var r = document.getElementsByTagName('script')[0];
+					r.parentNode.insertBefore(t, r);
+				}
+			})('https://s.pinimg.com/ct/core.js');
+			pintrk('load', '2614141578030', { em: '<user_email_address>' });
+			pintrk('page');
+
+			pintrk('track', 'checkout', {
+				value: 100,
+				order_quantity: 1,
+				currency: 'USD'
+			});
+			// <!-- end Pinterest Tag -->
+		</script>
+		<!-- End posthog SiteCTRL -->
+
+		<!-- google adsenses -->
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1322891097402572" crossorigin="anonymous"></script>
+
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
