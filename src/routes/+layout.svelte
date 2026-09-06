@@ -4,21 +4,36 @@
 	import { navigations } from '$lib/config';
 	import { cdnPath } from '$lib/store/store';
 	import { fetchCurrentAddress } from '$lib/store/api';
+	import { initTheme } from '$lib/store/theme';
 
 	import '$lib/style/global.scss';
 
 	let { children } = $props();
 
+	let theme = $state('light');
+
+	const buildStamp = (() => {
+		const d = new Date();
+		const pad = (/** @type {number} */ n) => String(n).padStart(2, '0');
+		return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+	})();
+
 	onMount(async () => {
+		theme = initTheme();
 		await fetchCurrentAddress().then((r) => {
 			cdnPath.set(r);
 		});
 	});
+
+	/** @param {'light' | 'dark'} next */
+	function handleThemeToggle(next) {
+		theme = next;
+	}
 </script>
 
 <div class="app-container">
 	<header>
-		<Nav {navigations} />
+		<Nav {navigations} {theme} onToggle={handleThemeToggle} />
 	</header>
 
 	<main>
@@ -30,6 +45,8 @@
 	<footer class="footer-container">
 		Created by&nbsp;Shijie Zhou 2015 - &copy; {new Date().getFullYear()}
 	</footer>
+
+	<div class="build-version" title="Site build date">{buildStamp}</div>
 </div>
 
 <style lang="scss">
@@ -76,5 +93,22 @@
 		transition-duration: 0.2s;
 		transition-property: background-color, left, right;
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.build-version {
+		position: fixed;
+		bottom: 4px;
+		right: 8px;
+		font-size: 10px;
+		line-height: 1.4;
+		padding: 2px 6px;
+		border-radius: 4px;
+		border: 1px solid var(--border-color);
+		background-color: var(--bg-submenu);
+		color: var(--bg-text);
+		opacity: 0.55;
+		z-index: 10;
+		user-select: none;
+		pointer-events: none;
 	}
 </style>

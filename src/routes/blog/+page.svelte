@@ -38,7 +38,8 @@
 			margin-bottom: 50px;
 
 			span {
-				color: grey;
+				color: var(--bg-text);
+				opacity: 0.5;
 				font-size: 12px;
 				text-transform: uppercase;
 				padding-right: 10px;

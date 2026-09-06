@@ -1,8 +1,21 @@
 <script>
 	import { page } from '$app/stores';
 	import { clickOutside } from '$lib/utils/clickOutside.js';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+	import { toggleTheme } from '$lib/store/theme';
 
-	let { navigations } = $props();
+	/**
+	 * @typedef {{
+	 *   text: string, path: string, img?: string,
+	 *   subMenu?: Array<{ type: string, text: string, path: string, subText?: string }>
+	 * }} Navigation
+	 * @typedef {{
+	 *   navigations: Array<Navigation>,
+	 *   theme?: 'light' | 'dark',
+	 *   onToggle?: (next: 'light' | 'dark') => void
+	 * }} Props
+	 */
+	let { navigations, theme = 'light', onToggle = () => {} } = $props();
 
 	/** @type {number | null} */
 	let showChild = $state(null);
@@ -15,54 +28,62 @@
 	function handleCloseSubMenu() {
 		showChild = null;
 	}
+
+	function handleToggle() {
+		const next = toggleTheme(/** @type {'light' | 'dark'} */ (theme));
+		onToggle(next);
+	}
 </script>
 
 <nav data-theme="light">
 	<ul>
-		{#each navigations as nav, i}
-			{#if nav.text !== 'Home'}
-				<li>
-					<a
-						rel="prefetch"
-						aria-current={$page.url.pathname === nav.path ? 'page' : undefined}
-						onclick={() => handleShowNav(i)}
-						href={nav.path}>{nav.text.toUpperCase()}</a
+		{#each navigations.filter((/** @type {Navigation} */ nav) => nav.text !== 'Home') as nav, i}
+			<li>
+				<a
+					rel="prefetch"
+					aria-current={$page.url.pathname === nav.path ? 'page' : undefined}
+					onclick={() => handleShowNav(i)}
+					href={nav.path}>{nav.text.toUpperCase()}</a
+				>
+				{#if nav.subMenu && i === showChild}
+					<div
+						class="subMenu"
+						role="menu"
+						tabindex="-1"
+						use:clickOutside
+						onclickoutside={handleCloseSubMenu}
+						onmouseleave={() => handleShowNav(null)}
 					>
-					{#if nav.subMenu && i === showChild}
-						<div
-							class="subMenu"
-							role="menu"
-							tabindex="-1"
-							use:clickOutside
-							onclickoutside={handleCloseSubMenu}
-							onmouseleave={() => handleShowNav(null)}
-						>
-							{#each nav.subMenu as sub, si}
-								<a
-									class="subMenu-row"
-									href={sub.path}
-									onclick={handleCloseSubMenu}>{sub.text.toUpperCase()}</a
-								>
-							{/each}
-						</div>
-					{/if}
-				</li>
-			{:else}
-				<li class="logo">
-					<a href={nav.path}>
-						<img src={nav.img} alt={nav.img} />
-					</a>
-				</li>
-			{/if}
+						{#each nav.subMenu as sub, si}
+							<a
+								class="subMenu-row"
+								href={sub.path}
+								onclick={handleCloseSubMenu}>{sub.text.toUpperCase()}</a
+							>
+						{/each}
+					</div>
+				{/if}
+			</li>
+		{/each}
+		<li class="toggle">
+			<ThemeToggle {theme} onToggle={handleToggle} />
+		</li>
+		{#each navigations.filter((/** @type {Navigation} */ nav) => nav.text === 'Home') as nav}
+			<li class="logo">
+				<a href={nav.path}>
+					<img src={nav.img} alt={nav.img} />
+				</a>
+			</li>
 		{/each}
 	</ul>
 </nav>
 
 <style lang="scss">
 	nav {
-		border-bottom: 1px solid rgba(255, 62, 0, 0.1);
+		border-bottom: 1px solid var(--border-color);
 		background-color: var(--bg-color);
 		color: var(--bg-text);
+		position: relative;
 	}
 
 	ul {
@@ -93,13 +114,12 @@
 		}
 
 		a {
-			color: initial;
+			color: var(--bg-text);
 		}
 
 		&.logo {
 			display: flex;
 			align-items: center;
-			margin-left: auto;
 			justify-content: flex-end;
 			position: relative;
 
@@ -128,7 +148,7 @@
 		content: '';
 		width: calc(100% - 1em);
 		height: 2px;
-		background-color: rgb(255, 62, 0);
+		background-color: var(--accent);
 		display: block;
 		bottom: -1px;
 	}
@@ -143,22 +163,23 @@
 		display: block;
 		position: absolute;
 		z-index: 1;
-		border: 1px solid lightgray;
+		border: 1px solid var(--border-color);
 		cursor: pointer;
-		background-color: inherit;
+		background-color: var(--bg-submenu);
 
 		&-row {
 			padding: 10px;
 
 			&:hover {
-				background-color: lightgray;
+				background-color: var(--bg-surface-hover);
 			}
 		}
 	}
 
-	@media (max-width: 414px) {
-		.subMenu {
-			background-color: white;
-		}
+	.toggle {
+		margin-left: auto;
+		margin-right: 8px;
+		display: flex;
+		align-items: center;
 	}
 </style>

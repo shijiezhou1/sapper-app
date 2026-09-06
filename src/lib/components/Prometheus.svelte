@@ -47,7 +47,7 @@
 			}
 
 			&:hover {
-				box-shadow: 0px 0px 5px 0px black;
+				box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
 
 				p {
 					opacity: 1;
