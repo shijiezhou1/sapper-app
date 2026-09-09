@@ -1,7 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import Nav from '$lib/components/Nav.svelte';
 	import { navigations } from '$lib/config';
+	import { pageDict } from '$lib/i18n';
 	import { cdnPath } from '$lib/store/store';
 	import { fetchCurrentAddress } from '$lib/store/api';
 	import { initTheme } from '$lib/store/theme';
@@ -11,6 +13,11 @@
 	let { children } = $props();
 
 	let theme = $state('light');
+
+	const lang = $derived($page.data.lang || 'en');
+	const footerText = $derived(
+		pageDict(lang).footer.replace('{year}', `© ${new Date().getFullYear()}`)
+	);
 
 	const buildStamp = (() => {
 		const d = new Date();
@@ -33,7 +40,7 @@
 
 <div class="app-container">
 	<header>
-		<Nav {navigations} {theme} onToggle={handleThemeToggle} />
+		<Nav {navigations} {theme} {lang} onToggle={handleThemeToggle} />
 	</header>
 
 	<main>
@@ -42,9 +49,7 @@
 		</div>
 	</main>
 
-	<footer class="footer-container">
-		Created by&nbsp;Shijie Zhou 2015 - &copy; {new Date().getFullYear()}
-	</footer>
+	<footer class="footer-container">{footerText}</footer>
 
 	<div class="build-version" title="Site build date">{buildStamp}</div>
 </div>

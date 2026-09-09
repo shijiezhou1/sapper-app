@@ -23,9 +23,24 @@ const staticRoutes = [
 const escapeXml = (value) =>
 	value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/** @param {string} path */
+const locUrl = (path) => `${SITE.url}${escapeXml(encodeURI(path))}`;
+
 /** @param {string} path @param {string} [lastmod] */
-const urlEntry = (path, lastmod = SITE.lastmod) =>
-	`	<url><loc>${SITE.url}${escapeXml(encodeURI(path))}</loc><lastmod>${lastmod}</lastmod></url>`;
+const urlEntry = (path, lastmod = SITE.lastmod) => {
+	const enPath = path === '/' ? '/' : path;
+	const zhPath = path === '/' ? '/zh' : `/zh${path}`;
+	const en = locUrl(enPath);
+	const zh = locUrl(zhPath);
+	const alternates =
+		`<xhtml:link rel="alternate" hreflang="en" href="${en}"/>` +
+		`<xhtml:link rel="alternate" hreflang="zh" href="${zh}"/>` +
+		`<xhtml:link rel="alternate" hreflang="x-default" href="${en}"/>`;
+	return (
+		`	<url><loc>${en}</loc>${alternates}<lastmod>${lastmod}</lastmod></url>\n` +
+		`	<url><loc>${zh}</loc>${alternates}<lastmod>${lastmod}</lastmod></url>`
+	);
+};
 
 export function GET() {
 	const urls = [
@@ -35,7 +50,7 @@ export function GET() {
 	];
 
 	const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls.join('\n')}
 </urlset>`;
 

@@ -1,5 +1,7 @@
 <script>
+	import { page } from '$app/stores';
 	import { SITE } from '$lib/config';
+	import { localizedPath } from '$lib/i18n';
 
 	let {
 		title,
@@ -11,7 +13,11 @@
 		jsonLd = null
 	} = $props();
 
-	const canonical = $derived(`${SITE.url}${encodeURI(path)}`);
+	const lang = $derived($page.data.lang || 'en');
+
+	const enUrl = $derived(`${SITE.url}${encodeURI(path)}`);
+	const zhUrl = $derived(`${SITE.url}${encodeURI(localizedPath(path, 'zh'))}`);
+	const canonical = $derived(lang === 'zh' ? zhUrl : enUrl);
 
 	const formattedTitle = $derived(
 		title.trim().endsWith(SITE.name) ? title.trim() : `${title.trim()} | ${SITE.name}`
@@ -30,12 +36,16 @@
 	<meta name="description" content={description} />
 	<meta name="author" content={SITE.author} />
 	<link rel="canonical" href={canonical} />
+	<link rel="alternate" hreflang="en" href={enUrl} />
+	<link rel="alternate" hreflang="zh" href={zhUrl} />
+	<link rel="alternate" hreflang="x-default" href={enUrl} />
 	{#if noindex}
 		<meta name="robots" content="noindex, nofollow" />
 	{/if}
 
 	<meta property="og:site_name" content={SITE.name} />
-	<meta property="og:locale" content={SITE.locale} />
+	<meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+	<meta property="og:locale:alternate" content={lang === 'zh' ? 'en_US' : 'zh_CN'} />
 	<meta property="og:type" content={type} />
 	<meta property="og:title" content={formattedTitle} />
 	<meta property="og:description" content={description} />

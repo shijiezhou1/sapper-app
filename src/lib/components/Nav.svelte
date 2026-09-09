@@ -2,7 +2,9 @@
 	import { page } from '$app/stores';
 	import { clickOutside } from '$lib/utils/clickOutside.js';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+	import LangToggle from '$lib/components/LangToggle.svelte';
 	import { toggleTheme } from '$lib/store/theme';
+	import { navLabel } from '$lib/i18n';
 
 	/**
 	 * @typedef {{
@@ -12,13 +14,20 @@
 	 * @typedef {{
 	 *   navigations: Array<Navigation>,
 	 *   theme?: 'light' | 'dark',
+	 *   lang?: string,
 	 *   onToggle?: (next: 'light' | 'dark') => void
 	 * }} Props
 	 */
-	let { navigations, theme = 'light', onToggle = () => {} } = $props();
+	let { navigations, theme = 'light', lang = 'en', onToggle = () => {} } = $props();
 
 	/** @type {number | null} */
 	let showChild = $state(null);
+
+	/** @param {Navigation | { text: string, path: string }} nav */
+	function label(nav) {
+		const text = navLabel(lang, nav.path) ?? nav.text;
+		return lang === 'zh' ? text : text.toUpperCase();
+	}
 
 	/** @param {number | null} index */
 	function handleShowNav(index) {
@@ -43,7 +52,7 @@
 					rel="prefetch"
 					aria-current={$page.url.pathname === nav.path ? 'page' : undefined}
 					onclick={() => handleShowNav(i)}
-					href={nav.path}>{nav.text.toUpperCase()}</a
+					href={nav.path}>{label(nav)}</a
 				>
 				{#if nav.subMenu && i === showChild}
 					<div
@@ -54,11 +63,9 @@
 						onclickoutside={handleCloseSubMenu}
 						onmouseleave={() => handleShowNav(null)}
 					>
-						{#each nav.subMenu as sub, si}
-							<a
-								class="subMenu-row"
-								href={sub.path}
-								onclick={handleCloseSubMenu}>{sub.text.toUpperCase()}</a
+						{#each nav.subMenu as sub}
+							<a class="subMenu-row" href={sub.path} onclick={handleCloseSubMenu}
+								>{label(sub)}</a
 							>
 						{/each}
 					</div>
@@ -66,12 +73,13 @@
 			</li>
 		{/each}
 		<li class="toggle">
+			<LangToggle {lang} />
 			<ThemeToggle {theme} onToggle={handleToggle} />
 		</li>
 		{#each navigations.filter((/** @type {Navigation} */ nav) => nav.text === 'Home') as nav}
 			<li class="logo">
-				<a href={nav.path}>
-					<img src={nav.img} alt={nav.img} />
+				<a href={nav.path} aria-label="{navLabel(lang, '/') ?? 'Home'}">
+					<img src={nav.img} alt="SHIJIE ZHOU" />
 				</a>
 			</li>
 		{/each}
@@ -181,5 +189,6 @@
 		margin-right: 8px;
 		display: flex;
 		align-items: center;
+		gap: 8px;
 	}
 </style>

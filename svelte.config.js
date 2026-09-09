@@ -11,7 +11,7 @@ const config = {
 			assets: 'build'
 		}),
 		prerender: {
-			entries: ['*', '/sitemap.xml', '/robots.txt'],
+			entries: ['*', '/zh', '/sitemap.xml', '/robots.txt'],
 			handleHttpError: 'warn'
 		},
 		alias: {
