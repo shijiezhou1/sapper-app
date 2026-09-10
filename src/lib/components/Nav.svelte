@@ -4,7 +4,7 @@
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import LangToggle from '$lib/components/LangToggle.svelte';
 	import { toggleTheme } from '$lib/store/theme';
-	import { navLabel } from '$lib/i18n';
+	import { navLabel, localizedPath, stripLocale } from '$lib/i18n';
 
 	/**
 	 * @typedef {{
@@ -50,9 +50,10 @@
 			<li>
 				<a
 					rel="prefetch"
-					aria-current={$page.url.pathname === nav.path ? 'page' : undefined}
+					href={localizedPath(nav.path, lang)}
+					aria-current={stripLocale($page.url.pathname) === nav.path ? 'page' : undefined}
 					onclick={() => handleShowNav(i)}
-					href={nav.path}>{label(nav)}</a
+					>{label(nav)}</a
 				>
 				{#if nav.subMenu && i === showChild}
 					<div
@@ -64,7 +65,7 @@
 						onmouseleave={() => handleShowNav(null)}
 					>
 						{#each nav.subMenu as sub}
-							<a class="subMenu-row" href={sub.path} onclick={handleCloseSubMenu}
+							<a class="subMenu-row" href={localizedPath(sub.path, lang)} onclick={handleCloseSubMenu}
 								>{label(sub)}</a
 							>
 						{/each}
@@ -78,7 +79,7 @@
 		</li>
 		{#each navigations.filter((/** @type {Navigation} */ nav) => nav.text === 'Home') as nav}
 			<li class="logo">
-				<a href={nav.path} aria-label="{navLabel(lang, '/') ?? 'Home'}">
+				<a href={localizedPath('/', lang)} aria-label="{navLabel(lang, '/') ?? 'Home'}">
 					<img src={nav.img} alt="SHIJIE ZHOU" />
 				</a>
 			</li>

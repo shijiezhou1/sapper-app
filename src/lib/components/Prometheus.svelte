@@ -1,5 +1,10 @@
 <script>
+	import { page } from '$app/stores';
+	import { localizedPath } from '$lib/i18n';
+
 	let { items } = $props();
+
+	const lang = $derived($page.data.lang || 'en');
 </script>
 
 <style lang="scss">
@@ -65,7 +70,7 @@
 					<img class="img" src={item.img} alt={item.des} />
 				</a>
 			{:else}
-				<a href="/project/{item.msg}">
+				<a href={localizedPath(`/project/${item.msg}`, lang)}>
 					<img class="img" src={item.img} alt={item.des} />
 					{#if item.des}
 						<p class="img-desc">{item.des}</p>
